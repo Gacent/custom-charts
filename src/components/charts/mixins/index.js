@@ -11,6 +11,27 @@ export default {
       default () {
         return null
       }
+    },
+    // sql数据，没传则使用测试数据
+    datas:{
+      type: Array,
+      default () {
+        return null
+      }
+    }
+  },
+  watch:{
+    outOptions:{
+      handler(){
+        this.setOptions()
+      },
+      deep:true
+    },
+    datas:{
+      handler(){
+        this.setOptions()
+      },
+      deep:true
     }
   },
   data () {
