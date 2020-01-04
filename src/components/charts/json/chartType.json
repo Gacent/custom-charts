@@ -1,0 +1,111 @@
+{
+  "data":[
+    {
+      "id":"1",
+      "name":"折线图",
+      "list":[
+        {
+          "cid": "11",
+          "name": "标准折线图",
+          "component":"lineCharts",
+          "picture":"./chart/line/line5.png",
+          "disabled":false
+        },
+        {
+          "cid": "12",
+          "name": "标准面积图",
+          "component":"lineCharts",
+          "picture":"./chart/line/line3.png",
+          "disabled":true
+        },
+        {
+          "cid": "13",
+          "name": "标准双折线图",
+          "component":"lineCharts",
+          "picture":"./chart/line/line11.png",
+          "disabled":true
+        }
+      ]
+    },
+    {
+      "id":"2",
+      "name":"柱状图",
+      "list":[
+        {
+          "cid": "21",
+          "name": "标准柱状图",
+          "component":"barCharts",
+          "picture":"./chart/bar/bar1.png",
+          "disabled":false
+        },
+        {
+          "cid": "22",
+          "name": "横向柱状图",
+          "component":"barCrosswiseCharts",
+          "picture":"./chart/bar/bar1.png",
+          "disabled":false
+        },
+        {
+          "cid": "23",
+          "name": "堆积柱状图",
+          "component":"lineCharts",
+          "picture":"./chart/line/line3.png",
+          "disabled":true
+        },
+        {
+          "cid": "24",
+          "name": "标准条形图",
+          "component":"lineCharts",
+          "picture":"./chart/line/line11.png",
+          "disabled":true
+        }
+      ]
+    },
+    {
+      "id":"3",
+      "name":"饼图",
+      "list":[
+        {
+          "cid": "31",
+          "name": "标准饼图",
+          "component":"pieCharts",
+          "picture":"./chart/pie/pie1.png",
+          "disabled":false
+        },
+        {
+          "cid": "32",
+          "name": "标准环形图",
+          "component":"lineCharts",
+          "picture":"./chart/line/line3.png",
+          "disabled":true
+        }
+      ]
+    },
+    {
+      "id":"4",
+      "name":"地图",
+      "list":[
+        {
+          "cid": "41",
+          "name": "标准地图",
+          "component":"mapFly",
+          "picture":"./chart/map/map1.png",
+          "disabled":false
+        }
+      ]
+    },
+    {
+      "id":"5",
+      "name":"混合图",
+      "list":[
+        {
+          "cid": "51",
+          "name": "折线混柱图",
+          "component":"lineBarCharts",
+          "picture":"./chart/map/map1.png",
+          "disabled":false
+        }
+      ]
+    }
+  ]
+}
