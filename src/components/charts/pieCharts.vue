@@ -92,7 +92,7 @@ export default {
           },
           formatter: (name) => {
             let con = ''
-            jsonData.chartData1.map((item) => {
+            jsonData.chartData2.map((item) => {
               if (item.name === name) {
                 con = item.value
               }
