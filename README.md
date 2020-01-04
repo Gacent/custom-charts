@@ -3,13 +3,7 @@
 > 思路：ECharts=>/charts/mixins/=>/charts其他vue是对应的一个类型的图表组件
 > mixin内部通过deepAssign深度合并，将内部和外部options进行合并
 
-## mapFly（地图飞线图）
-### props参数
-```javascript
-<mapFly id="mapfly" :fly-to="{name:'丹巴',lnglat:[101.89077, 30.87868]}" />
-```
-
-## 其他chart
+## chart
 ### 公共props参数
 ```javscript
 id: {
@@ -48,6 +42,9 @@ colorAry: {
 ```
 #### 地图
 ##### mapFly（地图飞线图）
+```javascript
+<mapFly id="mapfly" :fly-to="{name:'丹巴',lnglat:[101.89077, 30.87868]}" />
+```
 1. flyTo
 ```javascript
 flyTo: {
