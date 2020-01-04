@@ -8,6 +8,12 @@ import sameOptions from './mixins' // 共同的配置项
 import jsonData from './json/testData'
 export default {
   mixins: [sameOptions],
+  props:{
+    isDiffColor:{
+      type:Boolean,
+      default:false
+    }
+  },
   data () {
     return {
       color: ['rgba(26, 116, 218, 1)', 'rgba(80, 194, 254, 1)', 'rgba(25, 188, 156, 1)', 'rgba(251, 178, 65, 1)', 'rgba(222, 76, 105, 1)', 'rgba(228, 214, 160, 1)']

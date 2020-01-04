@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="test">
-      <lineCharts id="line1" />
+      <lineBarCharts id="line1" />
     </div>
     <div class="test">
       <mapFly id="mapfly" :fly-to="{name:'丹巴',lnglat:[101.89077, 30.87868]}" />

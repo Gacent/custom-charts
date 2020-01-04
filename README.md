@@ -56,6 +56,13 @@ flyTo: {
 ```
 #### 混合图
 ##### lineBarChart（折线柱形混合）
+1. isDiffColor
+```javascript
+isDiffColor:{
+  type:Boolean,
+  default:false
+}
+```
 
 # main先指向./components进行调试，后期再使用./dist/customcharts.common.js
 

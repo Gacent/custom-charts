@@ -5,7 +5,7 @@ import lineBarCharts from './charts/lineBarCharts'
 import pieCharts from './charts/pieCharts'
 import mapFly from './charts/mapFly'
 import _ from 'lodash'
-import chartType from './charts/json/chartType'
+import {chartType} from './charts/json/chartType'
 
 import ECharts from './ECharts'
 const Components = {
