@@ -14,13 +14,13 @@ export default {
       color: ['rgba(26, 116, 218, 1)', 'rgba(80, 194, 254, 1)', 'rgba(25, 188, 156, 1)', 'rgba(251, 178, 65, 1)', 'rgba(222, 76, 105, 1)', 'rgba(228, 214, 160, 1)']
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-      this.initChart()
-    })
+  computed:{
+    endDatas(){
+      return this.datas||jsonData.chartData1
+    }
   },
   methods: {
-    initChart () {
+    setOptions () {
       this.defaultOptions = {
         tooltip: {
           trigger: 'axis',
@@ -45,7 +45,7 @@ export default {
             color: 'rgba(93, 98, 120, 1)',
             fontSize: fontSize(0.12)
           },
-          data: jsonData.chartData1.map((item) => {
+          data: this.endDatas.map((item) => {
             return item.name
           }),
           boundaryGap: false
@@ -69,7 +69,7 @@ export default {
         },
         series: [{
           type: 'line',
-          data: jsonData.chartData1,
+          data: this.endDatas,
           smooth: true,
           itemStyle: {
             color: this.isDiffColor ? (params) => {

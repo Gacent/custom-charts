@@ -29,6 +29,11 @@ export default {
       chinaDatas: json.chinaDatas
     }
   },
+  computed:{
+    endDatas(){
+      return this.datas||this.chinaDatas
+    }
+  },
   mounted () {
     var mapFeatures = echarts.getMap('china').geoJson.features
     mapFeatures.forEach((v) => {
@@ -38,9 +43,6 @@ export default {
       this.geoCoordMap[name] = v.properties.cp
     })
     this.geoCoordMap[this.flyTo.name] = [...this.flyTo.lnglat] // 汇聚点
-    this.$nextTick(() => {
-      this.initChart()
-    })
   },
   methods: {
     // 最大最小值
@@ -75,7 +77,7 @@ export default {
       }
       return res
     },
-    initChart () {
+    setOptions(){
       var series = []
       const objmaxmin = this.findMaxMin(this.chinaDatas);
       [[this.flyTo.name, this.chinaDatas]].forEach((item) => {

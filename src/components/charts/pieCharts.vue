@@ -31,13 +31,13 @@ export default {
       ]
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-      this.initChart()
-    })
+  computed:{
+    endDatas(){
+      return this.datas||jsonData.chartData2
+    }
   },
   methods: {
-    initChart () {
+    setOptions () {
       this.defaultOptions = {
         tooltip: {
           trigger: 'item',
@@ -92,14 +92,14 @@ export default {
           },
           formatter: (name) => {
             let con = ''
-            jsonData.chartData2.map((item) => {
+            this.endDatas.map((item) => {
               if (item.name === name) {
                 con = item.value
               }
             })
             return `{a|${name}} {b|${con}人}`
           },
-          data: jsonData.chartData2
+          data: this.endDatas
         },
         series: [{
           type: 'pie',
@@ -107,7 +107,7 @@ export default {
           center: ['50%', '30%'],
           roseType: false,
           color: this.colorAry === 'oneColors' ? this.oneColors : this.twoColors,
-          data: jsonData.chartData2,
+          data: this.endDatas,
           labelLine: {
             show: false
           },

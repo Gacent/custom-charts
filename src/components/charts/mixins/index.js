@@ -21,13 +21,13 @@ export default {
     }
   },
   watch:{
-    outOptions:{
+    outOptions:{  // 选项变更更新
       handler(){
         this.setOptions()
       },
       deep:true
     },
-    datas:{
+    datas:{ // 数据变更更新
       handler(){
         this.setOptions()
       },
@@ -40,7 +40,15 @@ export default {
       defaultOptions: null
     }
   },
+  mounted () {
+    this.$nextTick(() => {
+      this.initChart()
+    })
+  },
   methods: {
+    initChart () {
+      this.setOptions() // 每个图表的选项
+    },
     merge () {
       this.options = {}
       // 深度合并

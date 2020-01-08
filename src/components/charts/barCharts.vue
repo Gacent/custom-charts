@@ -28,15 +28,7 @@ export default {
       return this.datas||jsonData.chartData1
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-      this.initChart()
-    })
-  },
   methods: {
-    initChart () {
-      this.setOptions()
-    },
     setOptions(){
       this.defaultOptions = {
         tooltip: {

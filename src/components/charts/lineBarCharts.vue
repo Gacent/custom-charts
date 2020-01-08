@@ -19,13 +19,13 @@ export default {
       color: ['rgba(26, 116, 218, 1)', 'rgba(80, 194, 254, 1)', 'rgba(25, 188, 156, 1)', 'rgba(251, 178, 65, 1)', 'rgba(222, 76, 105, 1)', 'rgba(228, 214, 160, 1)']
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-      this.initChart()
-    })
+  computed:{
+    endDatas(){
+      return this.datas||jsonData.chartData1
+    }
   },
   methods: {
-    initChart () {
+    setOptions () {
       this.defaultOptions = {
         grid: {
           top: '20%',
@@ -48,7 +48,7 @@ export default {
         xAxis: [
           {
             type: 'category',
-            data: jsonData.chartData1.map((item) => {
+            data: this.endDatas.map((item) => {
               return item.name
             }),
             axisLabel: {
@@ -107,7 +107,7 @@ export default {
             name: '蒸发量',
             type: 'bar',
             yAxisIndex: 0,
-            data: jsonData.chartData1,
+            data: this.endDatas,
             itemStyle: {
               color: this.isDiffColor ? (params) => {
                 return this.color[params.dataIndex % 6]
@@ -119,7 +119,7 @@ export default {
             type: 'line',
             smooth: true,
             yAxisIndex: 1,
-            data: jsonData.chartData1,
+            data: this.endDatas,
             itemStyle: {
               color: 'rgba(0, 255, 200, 1)'
             }
