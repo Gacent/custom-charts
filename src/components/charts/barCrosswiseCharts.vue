@@ -37,13 +37,27 @@ export default {
         // eslint-disable-next-line
         yAxis: {
           type: 'category',
-          axisLabel: {
-            color: 'rgba(93, 98, 120, 1)',
-            fontSize: fontSize(0.12)
-          },
           nameTextStyle: {
             color: 'rgba(93, 98, 120, 1)',
             fontSize: fontSize(0.12)
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,0.1)'
+            }
+          },
+          axisLabel: {
+            color: '#5D6278',
+            fontSize: fontSize(0.12),
+          },
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: 'rgba(255,255,255,0.1)'
+            }
+          },
+          axisTick: {
+            show: false
           },
           data: jsonData.chartData1.map((item) => {
             return item.name
@@ -52,19 +66,25 @@ export default {
         // eslint-disable-next-line
         xAxis: {
           type: 'value',
-          axisLabel: {
-            color: 'rgba(93, 98, 120, 1)',
-            fontSize: fontSize(0.12)
-          },
           nameTextStyle: {
             color: 'rgba(93, 98, 120, 1)',
             fontSize: fontSize(0.12)
           },
           splitLine: {
-            lineStyle: {
-              color: 'rgba(255, 255, 255, .1)'
+            normal: {
+              show: false
             }
-          }
+          },
+          axisLabel: {
+            color: '#5D6278',
+            fontSize: fontSize(0.12)
+          },
+          axisLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          },
         },
         series: [{
           type: 'bar',
