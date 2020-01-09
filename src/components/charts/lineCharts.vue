@@ -15,7 +15,7 @@ export default {
       if(this.datas instanceof Array){
         endDatas=this.datas
       } else if(this.datas instanceof Object) {
-        console.log(123)
+        // console.log(123)
       } else {
         endDatas=null
       }
