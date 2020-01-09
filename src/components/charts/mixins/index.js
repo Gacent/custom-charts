@@ -14,7 +14,7 @@ export default {
     },
     // sql数据，没传则使用测试数据
     datas:{
-      type: Array,
+      type: [Array,Object],
       default () {
         return null
       }

@@ -9,14 +9,17 @@ import jsonData from './json/testData'
 export default {
   name: 'lineCharts',
   mixins: [sameOptions],
-  data () {
-    return {
-      color: ['rgba(26, 116, 218, 1)', 'rgba(80, 194, 254, 1)', 'rgba(25, 188, 156, 1)', 'rgba(251, 178, 65, 1)', 'rgba(222, 76, 105, 1)', 'rgba(228, 214, 160, 1)']
-    }
-  },
   computed:{
     endDatas(){
-      return this.datas||jsonData.chartData1
+      let endDatas=null
+      if(this.datas instanceof Array){
+        endDatas=this.datas
+      } else if(this.datas instanceof Object) {
+        console.log(123)
+      } else {
+        endDatas=null
+      }
+      return endDatas||jsonData.chartData1
     }
   },
   methods: {
@@ -72,9 +75,7 @@ export default {
           data: this.endDatas,
           smooth: true,
           itemStyle: {
-            color: this.isDiffColor ? (params) => {
-              return this.color[params.dataIndex % 6]
-            } : 'rgba(80, 254, 202, 1)'
+            color: 'rgba(80, 254, 202, 1)'
           }
         }]
       }

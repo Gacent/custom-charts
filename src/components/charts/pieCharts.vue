@@ -49,7 +49,6 @@ export default {
             {
               type: 'text',
               style: {
-                text: '旅游',
                 font: fontSize(0.18) + 'px "Microsoft YaHei"',
                 fill: '#fff'
               },
@@ -58,7 +57,6 @@ export default {
             {
               type: 'text',
               style: {
-                text: '方式',
                 font: fontSize(0.18) + 'px "Microsoft YaHei"',
                 fill: '#fff'
               },

@@ -31,7 +31,15 @@ export default {
   },
   computed:{
     endDatas(){
-      return this.datas||this.chinaDatas
+      let endAry=[]
+      if(this.datas){
+        this.datas.map((item)=>{
+          endAry.push([item])
+        })
+        return endAry
+      } else {
+        return this.chinaDatas
+      }
     }
   },
   mounted () {
@@ -63,6 +71,8 @@ export default {
         var dataItem = data[i]
         var fromCoord = this.geoCoordMap[dataItem[0].name]
         // var toCoord = [this.geoCoordMap[dataItem[1].name]]
+        // console.log(toCoordName,this.geoCoordMap[toCoordName])
+        // var toCoord = [this.geoCoordMap[toCoordName]]
         var toCoord = [...this.flyTo.lnglat]
         if (fromCoord && toCoord) {
           res.push([{
@@ -75,12 +85,15 @@ export default {
           ])
         }
       }
+
       return res
     },
     setOptions(){
       var series = []
-      const objmaxmin = this.findMaxMin(this.chinaDatas);
-      [[this.flyTo.name, this.chinaDatas]].forEach((item) => {
+      const objmaxmin = this.findMaxMin(this.endDatas);
+      [
+        [this.flyTo.name, this.endDatas],
+      ].forEach((item) => {
         series.push({
           type: 'lines',
           zlevel: 2,
@@ -172,7 +185,7 @@ export default {
           symbolSize: 50,
           data: [{
             name: item[0],
-            value: this.geoCoordMap[item[0]].concat([10])
+            value:this.geoCoordMap[item[0]].concat([10])
           }]
         }
         )
@@ -192,7 +205,7 @@ export default {
             // 根据业务自己拓展要显示的内容
             var res = ''
             var name = params.name
-            var value = params.value[params.seriesIndex + 1]
+            var value = params.value[2]
             res = "<span style='color:#fff;'>" + name + '</span><br/>数据：' + value
             return res
           }
