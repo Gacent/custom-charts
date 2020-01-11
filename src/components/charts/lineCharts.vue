@@ -11,19 +11,44 @@ export default {
   mixins: [sameOptions],
   computed:{
     endDatas(){
-      let endDatas=null
-      if(this.datas instanceof Array){
-        endDatas=this.datas
-      } else if(this.datas instanceof Object) {
-        // console.log(123)
-      } else {
-        endDatas=null
-      }
-      return endDatas||jsonData.chartData1
+      let endData=(this.datas&&this.datas.length>0)?this.datas:jsonData.chartData1
+      return endData
     }
   },
   methods: {
     setOptions () {
+      let series=[]
+      let xName=[]
+      if(this.endDatas[0] instanceof Array){//多条线
+        this.endDatas.map((item)=>{
+          item.map((nameItem)=>{
+            if(xName.indexOf(nameItem.name)<=-1){ // 没有则push
+              xName.push(nameItem.name)
+            }
+          })
+          series.push({
+            type: 'line',
+            data: item,
+            smooth: true,
+            itemStyle: {
+              color: 'rgba(80, 254, 202, 1)'
+            }
+          })
+        })
+      } else {  // 一条线
+        this.endDatas.map((item)=>{
+          xName.push(item.name)
+        })
+        series.push({
+          type: 'line',
+          data: this.endDatas,
+          smooth: true,
+          itemStyle: {
+            color: 'rgba(80, 254, 202, 1)'
+          }
+        })
+      }
+
       this.defaultOptions = {
         tooltip: {
           trigger: 'axis',
@@ -59,9 +84,7 @@ export default {
           axisTick: {
             show: false
           },
-          data: this.endDatas.map((item) => {
-            return item.name
-          }),
+          data: xName,
           boundaryGap: false
         },
         // eslint-disable-next-line
@@ -90,14 +113,7 @@ export default {
             show: false
           }
         },
-        series: [{
-          type: 'line',
-          data: this.endDatas,
-          smooth: true,
-          itemStyle: {
-            color: 'rgba(80, 254, 202, 1)'
-          }
-        }]
+        series: series
       }
       // 深度合并选项
       this.merge()

@@ -121,5 +121,47 @@
     "name": "残疾",
     "value": 40
   }],
-  "gaugeData": [50]
+  "chartData3":[[{
+    "name": "Mon",
+    "value": null
+  }, {
+    "name": "Tue",
+    "value": "200"
+  }, {
+    "name": "Wed",
+    "value": "150"
+  }, {
+    "name": "Thu",
+    "value": "80"
+  }, {
+    "name": "Fri",
+    "value": "70"
+  }, {
+    "name": "Sat",
+    "value": "110"
+  }, {
+    "name": "Sun",
+    "value": "130"
+  }],[{
+    "name": "Mon",
+    "value": "100"
+  }, {
+    "name": "Tue",
+    "value": "100"
+  }, {
+    "name": "Wed",
+    "value": "120"
+  }, {
+    "name": "Thu",
+    "value": "60"
+  }, {
+    "name": "Fri",
+    "value": "80"
+  }, {
+    "name": "Sat",
+    "value": "45"
+  }, {
+    "name": "Sun",
+    "value": null
+  }]]
 }

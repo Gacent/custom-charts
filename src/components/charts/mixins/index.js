@@ -14,7 +14,7 @@ export default {
     },
     // sql数据，没传则使用测试数据
     datas:{
-      type: [Array,Object],
+      type: Array,
       default () {
         return null
       }
@@ -46,6 +46,7 @@ export default {
     })
   },
   methods: {
+    // 初始化
     initChart () {
       this.setOptions() // 每个图表的选项
     },

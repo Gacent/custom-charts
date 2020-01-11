@@ -1,11 +1,12 @@
 {
   "name": "custom-charts",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "inspect": "vue-cli-service inspect",
     "build:component": "vue-cli-service build --target lib --name customcharts ./src/components/index.js"
   },
   "dependencies": {
@@ -14,7 +15,7 @@
     "lodash": "^4.17.15",
     "vue": "^2.6.10"
   },
-  "main": "./src/components/index.js",
+  "main": "./dist/customcharts.common.js",
   "files": [
     "dist/*",
     "src/*",
