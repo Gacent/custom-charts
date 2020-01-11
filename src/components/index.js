@@ -4,6 +4,7 @@ import barCrosswiseCharts from './charts/barCrosswiseCharts'
 import lineBarCharts from './charts/lineBarCharts'
 import pieCharts from './charts/pieCharts'
 import mapFly from './charts/mapFly'
+import meterCharts from './charts/meterCharts'
 import _ from 'lodash'
 import {chartType} from './charts/json/chartType'
 
@@ -15,6 +16,7 @@ const Components = {
   lineBarCharts,
   pieCharts,
   mapFly,
+  meterCharts,
 
   ECharts
 }
