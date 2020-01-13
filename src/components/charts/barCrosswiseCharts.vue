@@ -42,6 +42,7 @@ export default {
             fontSize: fontSize(0.12)
           },
           splitLine: {
+            show: true,
             lineStyle: {
               color: 'rgba(255,255,255,0.1)'
             }
@@ -71,8 +72,9 @@ export default {
             fontSize: fontSize(0.12)
           },
           splitLine: {
-            normal: {
-              show: false
+            show: false,
+            lineStyle: {
+              color: 'rgba(255,255,255,0.1)'
             }
           },
           axisLabel: {
@@ -80,7 +82,10 @@ export default {
             fontSize: fontSize(0.12)
           },
           axisLine: {
-            show: false
+            show: false,
+            lineStyle: {
+              color: 'rgba(255,255,255,0.1)'
+            }
           },
           axisTick: {
             show: false
