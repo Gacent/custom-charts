@@ -22,6 +22,15 @@ export default {
   methods: {
     initChart () {
       this.defaultOptions = {
+        title:{
+          left: 'center',
+          top: fontSize(0.2),
+          textStyle: {
+            color: '#fff',
+            fontSize:fontSize(0.18),
+            fontWeight: 500
+          }
+        },
         tooltip: {
           trigger: 'axis',
           axisPointer: { // 坐标轴指示器，坐标轴触发有效
