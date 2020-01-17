@@ -68,3 +68,7 @@ isDiffColor:{
 
 # chartTable的BUG
 ## 如果数据没有排序，loop为true会有BUG
+
+# 版本
+## 0.1.3
+- pie图表更新
