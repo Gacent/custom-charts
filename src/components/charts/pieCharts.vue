@@ -63,7 +63,7 @@ export default {
               top: fontSize(0.26)
             }
           ],
-          top: '21%',
+          top: '25%',
           type: 'group',
           left: 'center'
         },
@@ -72,7 +72,7 @@ export default {
           icon: 'circle',
           x: 'center',
           height: '70px',
-          top: '63%',
+          top: '68%',
           itemWidth: fontSize(0.1),
           itemHeight: fontSize(0.1),
           align: 'left',
@@ -102,7 +102,7 @@ export default {
         series: [{
           type: 'pie',
           radius: ['40%', '60%'],
-          center: ['50%', '30%'],
+          center: ['50%', '35%'],
           roseType: false,
           color: this.colorAry === 'oneColors' ? this.oneColors : this.twoColors,
           data: this.endDatas,
