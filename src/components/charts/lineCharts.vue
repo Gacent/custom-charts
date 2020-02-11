@@ -19,36 +19,19 @@ export default {
     setOptions () {
       let series=[]
       let xName=[]
-      if(this.endDatas[0] instanceof Array){//多条线
-        this.endDatas.map((item)=>{
-          item.map((nameItem)=>{
-            if(xName.indexOf(nameItem.name)<=-1){ // 没有则push
-              xName.push(nameItem.name)
-            }
-          })
-          series.push({
-            type: 'line',
-            data: item,
-            smooth: true,
-            itemStyle: {
-              color: 'rgba(80, 254, 202, 1)'
-            }
-          })
-        })
-      } else {  // 一条线
-        this.endDatas.map((item)=>{
-          xName.push(item.name)
-        })
-        series.push({
-          type: 'line',
-          data: this.endDatas,
-          smooth: true,
-          itemStyle: {
-            color: 'rgba(80, 254, 202, 1)'
+      this.endDatas.map((items, index)=>{
+        items.map((nameItem) => {
+          if(xName.indexOf(nameItem.name) <= -1) {
+            xName.push(nameItem.name)
           }
         })
-      }
-
+        series.push({
+          name: this.legendDatas ? this.legendDatas[index] : '',
+          type: 'line',
+          data: items,
+          smooth: true
+        })
+      })
       this.defaultOptions = {
         title:{
           left: 'center',
@@ -64,6 +47,19 @@ export default {
           axisPointer: { // 坐标轴指示器，坐标轴触发有效
             type: 'line' // 默认为直线，可选为：'line' | 'shadow'
           }
+        },
+        legend: {
+          show: false,
+          top: '0',
+          right: fontSize(0.5),
+          itemWidth: 12,
+          itemHeight: 12,
+          itemGap: 20,
+          textStyle: {
+            color: '#FFF',
+            fontSize: fontSize(0.12)
+          },
+          data: this.legendDatas
         },
         grid: {
           top: '15%',

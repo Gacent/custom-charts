@@ -18,6 +18,12 @@ export default {
       default () {
         return null
       }
+    },
+    legendDatas: {
+      type: Array,
+      default () {
+        return null
+      }
     }
   },
   watch:{
