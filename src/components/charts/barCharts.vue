@@ -30,6 +30,22 @@ export default {
   },
   methods: {
     setOptions(){
+      let series=[]
+      let xName=[]
+      this.endDatas.map((items, index)=>{
+        items.map((nameItem) => {
+          if(xName.indexOf(nameItem.name) <= -1) {
+            xName.push(nameItem.name)
+          }
+        })
+        series.push({
+          name: this.legendDatas ? this.legendDatas[index] : '',
+          type: 'bar',
+          barWidth: 8,
+          data: items
+        })
+        
+      })
       this.defaultOptions = {
         title:{
           left: 'center',
@@ -46,13 +62,25 @@ export default {
             type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           }
         },
+        legend: {
+          show: false,
+          top: '0',
+          right: fontSize(0.5),
+          itemWidth: 12,
+          itemHeight: 12,
+          itemGap: 20,
+          textStyle: {
+            color: '#FFF',
+            fontSize: fontSize(0.12)
+          },
+          data: this.legendDatas
+        },
         grid: {
           top: '15%',
           bottom: '15%',
           left: '15%',
           right: '10%'
         },
-        // eslint-disable-next-line
         xAxis: {
           type: 'category',
           nameTextStyle: {
@@ -65,6 +93,7 @@ export default {
             }
           },
           axisLabel: {
+            interval: 0,
             color: '#5D6278',
             fontSize: fontSize(0.12)
           },
@@ -74,17 +103,16 @@ export default {
           axisTick: {
             show: false
           },
-          data: this.endDatas.map((item) => {
-            return item.name
-          })
+          data: xName
         },
-        // eslint-disable-next-line
         yAxis: {
           type: 'value',
           name: '数量（次）',
+          nameLocation: 'end',
           nameTextStyle: {
-            color: 'rgba(93, 98, 120, 1)',
-            fontSize: fontSize(0.12)
+            color: '#5D6278',
+            fontSize: fontSize(0.12),
+            align: 'center'
           },
           splitLine: {
             lineStyle: {
@@ -105,15 +133,7 @@ export default {
             show: false
           }
         },
-        series: [{
-          type: 'bar',
-          data: this.endDatas,
-          itemStyle: {
-            color: this.isDiffColor ? (params) => {
-              return this.color[params.dataIndex % 6]
-            } : 'rgba(80, 254, 202, 1)'
-          }
-        }]
+        series: series
       }
       this.merge()
     }

@@ -67,7 +67,6 @@ export default {
           left: '15%',
           right: '10%'
         },
-        // eslint-disable-next-line
         xAxis: {
           type: 'category',
           nameTextStyle: {
@@ -80,6 +79,7 @@ export default {
             }
           },
           axisLabel: {
+            interval: 0,
             color: '#5D6278',
             fontSize: fontSize(0.12)
           },
@@ -92,19 +92,22 @@ export default {
           data: xName,
           boundaryGap: false
         },
-        // eslint-disable-next-line
         yAxis: {
           type: 'value',
+          nameLocation: 'end',
           nameTextStyle: {
-            color: 'rgba(93, 98, 120, 1)',
-            fontSize: fontSize(0.12)
+            color: '#5D6278',
+            fontSize: fontSize(0.12),
+            align: 'center'
           },
           splitLine: {
+            show: true,
             lineStyle: {
               color: 'rgba(255,255,255,0.1)'
             }
           },
           axisLabel: {
+            show: true,
             color: '#5D6278',
             fontSize: fontSize(0.12),
           },
