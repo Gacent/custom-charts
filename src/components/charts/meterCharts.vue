@@ -34,8 +34,9 @@ export default {
       this.defaultOptions = {
         title: {
           textStyle: {
-            color: '#FFF',
-            fontSize: fontSize(0.2)
+            color: '#fff',
+            fontSize:fontSize(0.2),
+            fontWeight: 500
           }
         },
         color: [translateColor('#5BD1FF', '#32C5FF'), translateColor('#F183A2', '#DE4C69'), translateColor('#FDD976', '#FBB241')],
