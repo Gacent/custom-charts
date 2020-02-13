@@ -7,6 +7,7 @@ import echarts from 'echarts'
 // test测试数据，后期对接需要删除
 import sameOptions from './mixins' // 共同的配置项
 import json from './json/testData'
+import cityJson from './json/city'
 
 // 引入中国地图
 import china from 'echarts/map/json/china.json'
@@ -21,6 +22,12 @@ export default {
       default () {
         return { name: '丹巴', lnglat: [101.89077, 30.87868] }
       }
+    },
+    isCity:{
+      type:Boolean,
+      default(){
+        return false
+      }
     }
   },
   data () {
@@ -32,8 +39,8 @@ export default {
   computed:{
     endDatas(){
       let endAry=[]
-      if(this.datas){
-        this.datas.map((item)=>{
+      if(this.datas&&this.datas.length>0&&this.datas[0].length>0){
+        this.datas[0].map((item)=>{
           endAry.push([item])
         })
         return endAry
@@ -44,6 +51,7 @@ export default {
   },
   mounted () {
     var mapFeatures = echarts.getMap('china').geoJson.features
+    this.geoCoordMap=cityJson.geoCoordMap
     mapFeatures.forEach((v) => {
       // 地区名称
       var name = v.properties.name
@@ -51,6 +59,7 @@ export default {
       this.geoCoordMap[name] = v.properties.cp
     })
     this.geoCoordMap[this.flyTo.name] = [...this.flyTo.lnglat] // 汇聚点
+    // console.log(this.geoCoordMap)
   },
   methods: {
     // 最大最小值
@@ -65,15 +74,15 @@ export default {
         min
       }
     },
-    convertData (data) {
+    convertData (data) {  // 控制线得去向
       var res = []
+      var toCoord = [...this.flyTo.lnglat]
       for (var i = 0; i < data.length; i++) {
         var dataItem = data[i]
         var fromCoord = this.geoCoordMap[dataItem[0].name]
         // var toCoord = [this.geoCoordMap[dataItem[1].name]]
         // console.log(toCoordName,this.geoCoordMap[toCoordName])
         // var toCoord = [this.geoCoordMap[toCoordName]]
-        var toCoord = [...this.flyTo.lnglat]
         if (fromCoord && toCoord) {
           res.push([{
             coord: fromCoord,
@@ -90,6 +99,7 @@ export default {
     },
     setOptions(){
       var series = []
+      var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';
       const objmaxmin = this.findMaxMin(this.endDatas);
       [
         [this.flyTo.name, this.endDatas],
@@ -103,9 +113,10 @@ export default {
           effect: {
             show: true,
             period: 4, // 箭头指向速度，值越小速度越快
-            trailLength: 0.02, // 特效尾迹长度[0,1]值越大，尾迹越长重
-            symbol: 'arrow', // 箭头图标
-            symbolSize: 5 // 图标大小
+            trailLength: 0, // 特效尾迹长度[0,1]值越大，尾迹越长重
+            symbol: planePath,
+            // symbol: 'arrow', // 箭头图标
+            symbolSize: 15 // 图标大小
           },
           lineStyle: {
             normal: {
@@ -115,7 +126,8 @@ export default {
             }
           },
           data: this.convertData(item[1])
-        }, {
+        },
+        {
           type: 'effectScatter',
           coordinateSystem: 'geo',
           zlevel: 2,
@@ -165,6 +177,15 @@ export default {
             brushType: 'stroke',
             scale: 4
           },
+          tooltip:{
+            formatter: function (params) {
+              // 根据业务自己拓展要显示的内容
+              var res = ''
+              var name = params.name
+              res = "<span style='color:#fff;'>汇聚点：" + name + '</span><br/>'
+              return res
+            }
+          },
           label: {
             normal: {
               show: true,
@@ -185,7 +206,7 @@ export default {
           symbolSize: 50,
           data: [{
             name: item[0],
-            value:this.geoCoordMap[item[0]].concat([10])
+            value:this.geoCoordMap[item[0]].concat([0])
           }]
         }
         )

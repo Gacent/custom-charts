@@ -1,6 +1,7 @@
 import line5 from '../../chart/line/line5.png';
 import line3 from '../../chart/line/line3.png';
-import line11 from '../../chart/line/line11.png';
+import line6 from '../../chart/line/line3.png';
+// import line11 from '../../chart/line/line11.png';
 
 
 import bar1 from '../../chart/bar/bar1.png';
@@ -29,15 +30,15 @@ export const chartType=[
         "picture":line3,
         "disabled":true,
         "isXy":true,
-      },
-      {
-        "cid": "13",
-        "name": "标准双折线图",
-        "component":"lineCharts",
-        "picture":line11,
-        "disabled":true,
-        "isXy":true,
       }
+      // {
+      //   "cid": "13",
+      //   "name": "标准双折线图",
+      //   "component":"lineCharts",
+      //   "picture":line11,
+      //   "disabled":true,
+      //   "isXy":true,
+      // }
     ]
   },
   {
@@ -59,23 +60,23 @@ export const chartType=[
         "picture":bar1,
         "disabled":false,
         "isXy":true,
-      },
-      {
-        "cid": "23",
-        "name": "堆积柱状图",
-        "component":"lineCharts",
-        "picture":line3,
-        "disabled":true,
-        "isXy":true,
-      },
-      {
-        "cid": "24",
-        "name": "标准条形图",
-        "component":"lineCharts",
-        "picture":line11,
-        "disabled":true,
-        "isXy":true,
       }
+      // {
+      //   "cid": "23",
+      //   "name": "堆积柱状图",
+      //   "component":"lineCharts",
+      //   "picture":line3,
+      //   "disabled":true,
+      //   "isXy":true,
+      // },
+      // {
+      //   "cid": "24",
+      //   "name": "标准条形图",
+      //   "component":"lineCharts",
+      //   "picture":line11,
+      //   "disabled":true,
+      //   "isXy":true,
+      // }
     ]
   },
   {
@@ -91,14 +92,14 @@ export const chartType=[
         "disabled":false,
         "isXy":false,
       },
-      {
-        "cid": "32",
-        "name": "标准环形图",
-        "component":"lineCharts",
-        "picture":line3,
-        "disabled":true,
-        "isXy":false,
-      }
+      // {
+      //   "cid": "32",
+      //   "name": "标准环形图",
+      //   "component":"lineCharts",
+      //   "picture":line3,
+      //   "disabled":true,
+      //   "isXy":false,
+      // }
     ]
   },
   {
@@ -123,7 +124,7 @@ export const chartType=[
         "cid": "51",
         "name": "折线混柱图",
         "component":"lineBarCharts",
-        "picture":map1,
+        "picture":line6,
         "disabled":false,
         "isXy":true,
       }

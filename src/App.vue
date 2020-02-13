@@ -4,7 +4,10 @@
       <lineBarCharts id="line1" />
     </div>
     <div class="test">
-      <mapFly id="mapfly" :fly-to="{name:'广州',lnglat:[101.89077, 30.87868]}" />
+      <barCrosswiseCharts id="line" />
+    </div>
+    <div class="test">
+      <mapFly id="mapfly" :fly-to="{name:'丹巴',lnglat:[101.89077, 30.87868]}" :datas="cityDatas"/>
     </div>
   </div>
 </template>
@@ -13,6 +16,12 @@
 
 export default {
   name: 'app',
+  data(){
+    return {
+      chinaDatas:[[{name:'广东',value:12},{name:'四川',value:55}]],
+      cityDatas:[[{name:'广州',value:15},{name:'杭州',value:88}]]
+    }
+  },
   components: {
   },
   mounted () {

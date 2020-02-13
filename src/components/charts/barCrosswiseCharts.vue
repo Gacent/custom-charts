@@ -8,19 +8,33 @@ import sameOptions from './mixins' // 共同的配置项
 import jsonData from './json/testData'
 export default {
   mixins: [sameOptions],
-  data () {
-    return {
-      options: null,
-      defaultOptions: null
+  computed:{
+    endDatas(){
+      let endData=(this.datas&&this.datas.length>0)?this.datas:jsonData.chartData1
+      return endData
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-      this.initChart()
-    })
-  },
   methods: {
-    initChart () {
+    setOptions () {
+      let series=[]
+      let xName=[]
+      this.endDatas.map((items, index)=>{
+        items.map((nameItem) => {
+          if(xName.indexOf(nameItem.name) <= -1) {
+            xName.push(nameItem.name)
+          }
+        })
+        series.push({
+          type: 'bar',
+          name:this.legendDatas ? this.legendDatas[index] : '',
+          data: items,
+          barWidth: 10,
+          itemStyle: {
+            barBorderRadius: [10, 10, 10, 10],
+            color: translateColor('rgba(25, 188, 156, 1)', 'rgba(54, 223, 203, 1)')
+          }
+        })
+      })
       this.defaultOptions = {
         title:{
           left: 'center',
@@ -42,6 +56,19 @@ export default {
           bottom: '15%',
           left: '15%',
           right: '10%'
+        },
+        legend: {
+          show: false,
+          top: '0',
+          right: fontSize(0.5),
+          itemWidth: 12,
+          itemHeight: 12,
+          itemGap: 20,
+          textStyle: {
+            color: '#FFF',
+            fontSize: fontSize(0.12)
+          },
+          data: this.legendDatas
         },
         // eslint-disable-next-line
         yAxis: {
@@ -69,9 +96,7 @@ export default {
           axisTick: {
             show: false
           },
-          data: jsonData.chartData1.map((item) => {
-            return item.name
-          })
+          data: xName
         },
         // eslint-disable-next-line
         xAxis: {
@@ -100,15 +125,7 @@ export default {
             show: false
           },
         },
-        series: [{
-          type: 'bar',
-          data: jsonData.chartData1,
-          barWidth: 10,
-          itemStyle: {
-            barBorderRadius: [10, 10, 10, 10],
-            color: translateColor('rgba(25, 188, 156, 1)', 'rgba(54, 223, 203, 1)')
-          }
-        }]
+        series: series
       }
       this.merge()
     }
