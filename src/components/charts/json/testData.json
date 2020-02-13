@@ -89,7 +89,7 @@
       "value": 1
     }]
   ],
-  "chartData1":[{
+  "chartData1":[[{
     "name": "Mon",
     "value": "120"
   }, {
@@ -110,8 +110,8 @@
   }, {
     "name": "Sun",
     "value": "130"
-  }],
-  "chartData2":[{
+  }]],
+  "chartData2":[[{
     "name": "五保",
     "value": 10
   }, {
@@ -120,7 +120,7 @@
   }, {
     "name": "残疾",
     "value": 40
-  }],
+  }]],
   "chartData3":[[{
     "name": "Mon",
     "value": null

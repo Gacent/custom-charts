@@ -33,7 +33,8 @@ export default {
   },
   computed:{
     endDatas(){
-      return this.datas||jsonData.chartData2
+      return (this.datas&&this.datas.length>0)?this.datas[0]:jsonData.chartData2[0]
+      
     }
   },
   methods: {
