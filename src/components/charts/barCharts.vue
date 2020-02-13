@@ -39,8 +39,11 @@ export default {
         series.push({
           name: this.legendDatas ? this.legendDatas[index] : '',
           type: 'bar',
-          barWidth: 8,
-          data: items
+          barWidth: 12,
+          data: items,
+          itemStyle: {
+            color: 'rgba(54, 223, 203, 1)'
+          }
         })
         
       })
