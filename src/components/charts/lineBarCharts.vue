@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     endDatas() {
-      return this.datas || jsonData.chartData1;
+      return this.datas || jsonData.chartData3;
     }
   },
   methods: {
@@ -58,7 +58,7 @@ export default {
             axisLabel: {
               color: "#5D6278",
               fontSize: fontSize(0.12),
-              formatter: "{value} °C"
+              formatter: "{value}"
             },
             axisLine: {
               show: false,
@@ -87,9 +87,9 @@ export default {
             type: "bar",
             yAxisIndex: 0,
             data: items,
+            barWidth: 20,
             itemStyle: {
               barBorderRadius: [10, 10, 0, 0],
-              barWidth: 20,
               color: this.isDiffColor
                 ? params => {
                     return this.color[params.dataIndex % 6];
@@ -105,6 +105,7 @@ export default {
               fontSize: fontSize(0.12)
             },
             splitLine: {
+              show: false,
               lineStyle: {
                 color: "rgba(255,255,255,0.1)"
               }
@@ -112,7 +113,7 @@ export default {
             axisLabel: {
               color: "#5D6278",
               fontSize: fontSize(0.12),
-              formatter: "{value} ml"
+              formatter: "{value}"
             },
             axisLine: {
               show: false,
