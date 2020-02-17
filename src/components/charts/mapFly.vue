@@ -152,7 +152,7 @@ export default {
           },
           symbol: 'circle',
           symbolSize: function (val) {
-            return val[2] / objmaxmin.max[0].value + 2// 圆环大小
+            return val[2] / objmaxmin.max[0].value + 4// 圆环大小
           },
           itemStyle: {
             normal: {
