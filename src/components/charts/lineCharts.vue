@@ -28,6 +28,7 @@ export default {
         series.push({
           name: this.legendDatas ? this.legendDatas[index] : '',
           type: 'line',
+          connectNulls:true,
           data: items,
           smooth: true
         })
@@ -63,7 +64,7 @@ export default {
         },
         grid: {
           top: '15%',
-          bottom: '15%',
+          bottom: '20%',
           left: '15%',
           right: '10%'
         },
@@ -73,6 +74,8 @@ export default {
             color: 'rgba(93, 98, 120, 1)',
             fontSize: fontSize(0.12)
           },
+          nameLocation:'center',
+          nameGap:25,
           splitLine: {
             normal: {
               show: false
