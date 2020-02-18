@@ -49,6 +49,12 @@ export default {
       }
     }
   },
+  watch:{
+    flyTo(value,oldValue){
+      delete this.geoCoordMap[oldValue.name]
+      this.geoCoordMap[value.name] = [...value.lnglat]
+    }
+  },
   mounted () {
     var mapFeatures = echarts.getMap('china').geoJson.features
     this.geoCoordMap=cityJson.geoCoordMap
