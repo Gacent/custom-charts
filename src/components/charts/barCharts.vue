@@ -40,14 +40,12 @@ export default {
           name: this.legendDatas ? this.legendDatas[index] : '',
           type: 'bar',
           barWidth: 12,
-          data: items,
-          itemStyle: {
-            color: 'rgba(54, 223, 203, 1)'
-          }
+          data: items
         })
         
       })
       this.defaultOptions = {
+        color: 'rgba(54, 223, 203, 1)',
         title:{
           left: 'center',
           top: fontSize(0.2),
