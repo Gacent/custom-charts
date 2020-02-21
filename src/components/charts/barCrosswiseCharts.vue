@@ -73,6 +73,7 @@ export default {
         // eslint-disable-next-line
         yAxis: {
           type: 'category',
+          inverse: true, // 方向坐标
           nameTextStyle: {
             color: 'rgba(93, 98, 120, 1)',
             fontSize: fontSize(0.12)
