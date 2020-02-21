@@ -1,7 +1,7 @@
-# charts封装（vue-large-screen-adaptive仓库记得更新）
+# charts封装
 > 一个组件一种类型，传入的参数主要是对这种chart类型的样式进行修改
 > 思路：ECharts=>/charts/mixins/=>/charts其他vue是对应的一个类型的图表组件
-> mixin内部通过deepAssign深度合并，将内部和外部options进行合并
+> mixin内部通过lodash的merge进行递归合并，将内部和外部options进行合并
 
 ## chart
 ### 公共props参数
