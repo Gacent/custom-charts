@@ -76,3 +76,5 @@ isDiffColor:{
 - 更新所有图表兼容多数据传入
 ## 0.1.5
 - 修改main入口错误信息
+## 0.1.8
+- 修改barcross的y轴Name方向
