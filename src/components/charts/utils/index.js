@@ -17,7 +17,10 @@ export function fontSize (res) {
   // const docEl = document.documentElement
   const clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
   if (!clientWidth) return
-  const fontSize = 100 * (clientWidth / 1920)
+  let fontSize = 100 * (clientWidth / 1920)
+  if (clientWidth < 1000) {
+    fontSize = 100 * (clientWidth / 375)
+  }
   return res * fontSize
 }
 
