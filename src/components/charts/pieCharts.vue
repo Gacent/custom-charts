@@ -79,13 +79,13 @@ export default {
           align: 'left',
           textStyle: {
             rich: {
-              fontSize: fontSize(0.14),
-              color: '#fff',
               a: {
-                color: 'rgba(255, 255, 255, .5)'
+                color: 'rgba(255, 255, 255, .5)',
+                fontSize: fontSize(0.14)
               },
               b: {
-                color: 'rgba(255, 255, 255, 1)'
+                color: 'rgba(255, 255, 255, 1)',
+                fontSize: fontSize(0.14)
               }
             }
           },
