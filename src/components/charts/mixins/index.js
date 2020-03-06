@@ -1,3 +1,4 @@
+import { fontSize } from '../utils'
 export default {
   props: {
     id: {
@@ -35,7 +36,11 @@ export default {
     },
     datas:{ // 数据变更更新
       handler(){
-        this.setOptions()
+        if(this.datas&&this.datas.length>0&&this.datas[0].length>0){
+          this.setOptions()
+        } else {
+          this.notChart()
+        }
       },
       deep:true
     }
@@ -48,13 +53,34 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.initChart()
+      if(this.datas&&this.datas.length>0&&this.datas[0].length>0){
+        this.initChart()
+      } else {
+        this.notChart()
+      }
     })
   },
   methods: {
     // 初始化
     initChart () {
       this.setOptions() // 每个图表的选项
+    },
+    // not datas
+    notChart(){
+      this.defaultOptions={
+        title:{
+          text:'暂无数据',
+          top:'50%',
+          left:'center',
+          textStyle:{
+            fontSize:fontSize(0.15),
+            color:'rgba(255,255,255,.5)'
+          }
+        }
+      }
+      this.options = {}
+      
+      this._.merge(this.options, this.defaultOptions)
     },
     merge () {
       this.options = {}

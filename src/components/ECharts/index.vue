@@ -42,7 +42,7 @@ export default {
   watch: {
     options: {
       handler (options) {
-        this.chart.setOption(options)
+        this.chart.setOption(options,true)
       },
       deep: true
     }
