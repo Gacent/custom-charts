@@ -20,8 +20,10 @@ export function fontSize (res) {
   let fontSize 
   if (clientWidth < 1000) {
     fontSize = 100 * (clientWidth / 375)
-  } else {
+  } else if(clientWidth>=1000&&clientWidth<=1920){
     fontSize = 100 * (clientWidth / 1920)
+  } else{
+    fontSize = 100 * (clientWidth / 2436)
   }
   return res * fontSize
 }

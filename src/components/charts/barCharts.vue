@@ -61,6 +61,11 @@ export default {
             type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           }
         },
+        dataZoom: [{
+          type: 'inside',
+          endValue:5,
+          minValueSpan:3,
+        }],
         legend: {
           show: false,
           top: '0',

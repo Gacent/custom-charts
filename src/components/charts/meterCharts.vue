@@ -26,7 +26,7 @@ export default {
   },
   computed:{
     endDatas(){
-      return this.datas||jsonData.gaugeData
+      return (this.datas&&this.datas.length>0)?this.datas[0]:jsonData.gaugeData
     }
   },
   methods: {

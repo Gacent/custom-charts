@@ -89,6 +89,9 @@ export default {
               }
             }
           },
+          pageTextStyle:{
+            color:'#fff'
+          },
           formatter: (name) => {
             let con = ''
             this.endDatas.map((item) => {
@@ -106,6 +109,7 @@ export default {
           center: ['50%', '35%'],
           roseType: false,
           color: this.colorAry === 'oneColors' ? this.oneColors : this.twoColors,
+          stillShowZeroSum:false,
           data: this.endDatas,
           labelLine: {
             show: false

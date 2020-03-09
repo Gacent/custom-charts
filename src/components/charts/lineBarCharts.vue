@@ -143,6 +143,11 @@ export default {
             }
           }
         },
+        dataZoom: [{
+          type: 'inside',
+          endValue:5,
+          minValueSpan:3,
+        }],
         legend: {
           show: false,
           top: "0",
