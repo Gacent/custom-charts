@@ -59,9 +59,9 @@ export default {
           show: false,
           top: '0',
           right: fontSize(0.5),
-          itemWidth: 12,
-          itemHeight: 12,
-          itemGap: 20,
+          itemWidth: fontSize(0.12),
+          itemHeight: fontSize(0.12),
+          itemGap: fontSize(0.20),
           textStyle: {
             color: '#FFF',
             fontSize: fontSize(0.12)
@@ -81,7 +81,7 @@ export default {
             fontSize: fontSize(0.12)
           },
           nameLocation:'center',
-          nameGap:25,
+          nameGap:fontSize(0.25),
           splitLine: {
             normal: {
               show: false

@@ -87,7 +87,7 @@ export default {
             type: "bar",
             yAxisIndex: 0,
             data: items,
-            barWidth: 20,
+            barWidth: fontSize(0.20),
             itemStyle: {
               barBorderRadius: [10, 10, 0, 0],
               color: this.isDiffColor
@@ -152,9 +152,9 @@ export default {
           show: false,
           top: "0",
           right: fontSize(0.5),
-          itemWidth: 12,
-          itemHeight: 12,
-          itemGap: 20,
+          itemWidth: fontSize(0.12),
+          itemHeight: fontSize(0.12),
+          itemGap: fontSize(0.20),
           textStyle: {
             color: "#FFF",
             fontSize: fontSize(0.12)

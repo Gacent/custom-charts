@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { translateColor, fontSize } from './utils'
+import { transformNumber,translateColor, fontSize } from './utils'
 import sameOptions from './mixins' // 共同的配置项
 import jsonData from './json/testData'
 export default {
@@ -72,7 +72,7 @@ export default {
           orient: 'vertical',
           icon: 'circle',
           x: 'center',
-          height: '70px',
+          height: fontSize(0.7),
           top: '68%',
           itemWidth: fontSize(0.1),
           itemHeight: fontSize(0.1),
@@ -90,8 +90,10 @@ export default {
             }
           },
           pageTextStyle:{
-            color:'#fff'
+            color:'#fff',
+            fontSize:fontSize(0.12),
           },
+          pageIconSize:fontSize(0.10),
           formatter: (name) => {
             let con = ''
             this.endDatas.map((item) => {
@@ -99,7 +101,7 @@ export default {
                 con = item.value
               }
             })
-            return `{a|${name}} {b|${con}人}`
+            return `{a|${name}} {b|${transformNumber(con)}人}`
           },
           data: this.endDatas
         },

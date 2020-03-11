@@ -39,7 +39,7 @@ export default {
         series.push({
           name: this.legendDatas ? this.legendDatas[index] : '',
           type: 'bar',
-          barWidth: 12,
+          barWidth: fontSize(0.12),
           data: items
         })
         
@@ -70,9 +70,9 @@ export default {
           show: false,
           top: '0',
           right: fontSize(0.5),
-          itemWidth: 12,
-          itemHeight: 12,
-          itemGap: 20,
+          itemWidth: fontSize(0.12),
+          itemHeight: fontSize(0.12),
+          itemGap: fontSize(0.20),
           textStyle: {
             color: '#FFF',
             fontSize: fontSize(0.12)
@@ -91,7 +91,7 @@ export default {
             color: 'rgba(93, 98, 120, 1)',
             fontSize: fontSize(0.12)
           },
-          nameGap:25,
+          nameGap:fontSize(0.25),
           nameLocation:'center',
           splitLine: {
             normal: {

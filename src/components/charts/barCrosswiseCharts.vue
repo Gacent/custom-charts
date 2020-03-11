@@ -28,7 +28,7 @@ export default {
           type: 'bar',
           name:this.legendDatas ? this.legendDatas[index] : '',
           data: items,
-          barWidth: 10,
+          barWidth: fontSize(0.10),
           itemStyle: {
             barBorderRadius: [10, 10, 10, 10],
             color: translateColor('rgba(25, 188, 156, 1)', 'rgba(54, 223, 203, 1)')
@@ -61,9 +61,9 @@ export default {
           show: false,
           top: '0',
           right: fontSize(0.5),
-          itemWidth: 12,
-          itemHeight: 12,
-          itemGap: 20,
+          itemWidth: fontSize(0.12),
+          itemHeight: fontSize(0.12),
+          itemGap: fontSize(0.20),
           textStyle: {
             color: '#FFF',
             fontSize: fontSize(0.12)
@@ -108,7 +108,7 @@ export default {
             fontSize: fontSize(0.12)
           },
           nameLocation:'center',
-          nameGap:25,
+          nameGap:fontSize(0.25),
           splitLine: {
             show: false,
             lineStyle: {
