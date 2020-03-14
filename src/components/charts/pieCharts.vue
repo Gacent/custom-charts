@@ -3,32 +3,16 @@
 </template>
 
 <script>
-import { transformNumber,translateColor, fontSize } from './utils'
+import { transformNumber, fontSize } from './utils'
 import sameOptions from './mixins' // 共同的配置项
 import jsonData from './json/testData'
+import {colorAry} from './utils/translateColors'
 export default {
   mixins: [sameOptions],
-  props: {
-    colorAry: {
-      type: String,
-      default: 'oneColors'
-    }
-  },
   data () {
     return {
       options: null,
       defaultOptions: null,
-      oneColors: [
-        translateColor('rgba(241, 131, 162, 1)', 'rgba(222, 76, 105, 1)'),
-        translateColor('rgba(54, 223, 203, 1)', 'rgba(25, 188, 156, 1)'),
-        translateColor('rgba(253, 217, 118, 1)', 'rgba(251, 178, 65, 1)'),
-        translateColor('rgba(91, 209, 255, 1)', 'rgba(50, 197, 255, 1)')
-      ],
-      twoColors: [
-        translateColor('rgba(91, 209, 255, 1)', 'rgba(50, 197, 255, 1)'),
-        translateColor('rgba(157, 233, 255, 1)', 'rgba(100, 206, 254, 1)'),
-        translateColor('rgba(245, 231, 160, 1)', 'rgba(231, 203, 103, 1)')
-      ]
     }
   },
   computed:{
@@ -110,7 +94,7 @@ export default {
           radius: ['40%', '60%'],
           center: ['50%', '35%'],
           roseType: false,
-          color: this.colorAry === 'oneColors' ? this.oneColors : this.twoColors,
+          color:colorAry,
           stillShowZeroSum:false,
           data: this.endDatas,
           labelLine: {
