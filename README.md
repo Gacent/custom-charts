@@ -1,8 +1,8 @@
 # custom-charts
-> 适合有一定echarts基础的人使用
-> 一个组件一种类型，传入的参数主要是对这种chart类型的样式进行修改
-> 思路：ECharts=>/charts/mixins/=>/charts其他vue是对应的一个类型的图表组件，内部有写好的默认options，自己不满意可以传入outOptions来修改
-> mixin内部通过lodash的merge进行递归合并，将内部和外部options进行合并
+> 1. 适合有一定echarts基础的人使用
+> 2. 一个组件一种类型，传入的参数主要是对这种chart类型的样式进行修改
+> 3. 思路：ECharts=>/charts/mixins/=>/charts其他vue是对应的一个类型的图表组件，内部有写好的默认options，自己不满意可以传入outOptions来修改
+> 4. mixin内部通过lodash的merge进行递归合并，将内部和外部options进行合并
 
 ## chart
 ### 公共props参数
@@ -106,5 +106,5 @@ Vue.use(CustomCharts)
 ## 0.1.9
 - 修改了饼状图数值超过五位数按单位制方式
 - 修改文字根据屏幕大小进行调整
-## 0.2.1
+## 0.2.2
 - 减少npm文件发布，减小包的大小

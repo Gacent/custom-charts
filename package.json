@@ -1,6 +1,6 @@
 {
   "name": "custom-charts",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -17,7 +17,7 @@
   },
   "main": "./dist/customcharts.common.js",
   "files": [
-    "dist/*",
+    "dist/*.common.js",
     "*.json",
     "*.js"
   ],
