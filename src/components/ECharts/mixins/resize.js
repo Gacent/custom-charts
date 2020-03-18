@@ -1,3 +1,4 @@
+import  _debounce from 'lodash/debounce'
 export default {
   data () {
     return {
@@ -6,7 +7,7 @@ export default {
     }
   },
   mounted () {
-    this.$_resizeHandler = this._.debounce(() => {
+    this.$_resizeHandler = _debounce(() => {
       if (this.chart) {
         this.chart.resize()
       }

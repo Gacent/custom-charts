@@ -5,10 +5,11 @@ import lineBarCharts from './charts/lineBarCharts'
 import pieCharts from './charts/pieCharts'
 import mapFly from './charts/mapFly'
 import meterCharts from './charts/meterCharts'
-import _ from 'lodash'
+
 import {chartType} from './charts/json/chartType'
 
 import ECharts from './ECharts'
+
 const Components = {
   lineCharts,
   barCharts,
@@ -26,7 +27,7 @@ const install=function (Vue,opt={}){
     Vue.component(name, Components[name])
   })
   // lodash注册
-  Vue.prototype._ = _
+  // Vue.prototype._ = _
   // 图表数据json表对照
   Vue.prototype.$chartType=chartType
 }

@@ -1,4 +1,5 @@
 import { fontSize } from '../utils'
+import  _merge from 'lodash/merge'
 export default {
   props: {
     id: {
@@ -80,12 +81,12 @@ export default {
       }
       this.options = {}
       
-      this._.merge(this.options, this.defaultOptions)
+      _merge(this.options, this.defaultOptions)
     },
     merge () {
       this.options = {}
       // 深度合并
-      this._.merge(this.options, this.defaultOptions, this.outOptions)
+      _merge(this.options, this.defaultOptions, this.outOptions)
     }
   }
 }
