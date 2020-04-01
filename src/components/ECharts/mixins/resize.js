@@ -8,6 +8,9 @@ export default {
   },
   mounted () {
     this.$_resizeHandler = _debounce(() => {
+      if(this.reOption){
+        this.reOption()
+      }
       if (this.chart) {
         this.chart.resize()
       }

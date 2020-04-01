@@ -1,6 +1,6 @@
 {
   "name": "custom-charts",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -17,7 +17,7 @@
   },
   "main": "./dist/customcharts.umd.min.js",
   "files": [
-    "dist/*.umd.min.js",
+    "dist/customcharts.umd.min.js",
     "*.json"
   ],
   "repository": {

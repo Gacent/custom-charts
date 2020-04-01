@@ -22,7 +22,7 @@ const Components = {
   ECharts
 }
 // eslint-disable-next-line
-const install=function (Vue,opt={}){
+const install=function (Vue,opt){
   Object.keys(Components).forEach(name => {
     Vue.component(name, Components[name])
   })

@@ -1,5 +1,5 @@
 <template>
-  <ECharts v-if="options" :id="id" ref="echarts" :options="options" />
+  <ECharts v-if="options" :id="id" ref="echarts" :options="options" :reOption="setOptions"/>
 </template>
 
 <script>
@@ -129,10 +129,11 @@ export default {
       });
       this.defaultOptions = {
         grid: {
-          top: "20%",
-          bottom: "20%",
-          left: "20%",
-          right: "15%"
+          top: '15%',
+          bottom: '12%',
+          left: '2%',
+          right: '10%',
+          containLabel:true
         },
         tooltip: {
           trigger: "axis",

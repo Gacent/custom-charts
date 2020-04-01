@@ -1,5 +1,5 @@
 <template>
-  <ECharts v-if="options" :id="id" :options="options" />
+  <ECharts v-if="options" :id="id" :options="options" :reOption="setOptions"/>
 </template>
 
 <script>

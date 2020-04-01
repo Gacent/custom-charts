@@ -17,15 +17,26 @@ export function fontSize (res) {
   // const docEl = document.documentElement
   const clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
   if (!clientWidth) return
-  let fontSize 
-  if (clientWidth <= 1024) {
-    fontSize = 100 * (clientWidth / 375)
-  } else if(clientWidth>1024&&clientWidth<=1920){
-    fontSize = 100 * (clientWidth / 1920)
-  } else{
-    fontSize = 100 * (clientWidth / 2436)
+  // let fontSize 
+  // if(clientWidth<=375){
+  //   fontSize = 100 * (clientWidth / 375)
+  // } else if(clientWidth<=414){
+  //   fontSize = 100 * (clientWidth / 414)
+  // } else if(clientWidth<=750){
+  //   fontSize = 100 * (clientWidth / 750)
+  // } else if (clientWidth <= 1680) {
+  //   fontSize = 100 * (clientWidth / 1680)
+  // } else if(clientWidth<=1920){
+  //   fontSize = 100 * (clientWidth / 1920)
+  // } else{
+  //   fontSize = 100 * (clientWidth / 2436)
+  // }
+  // return Number((res * fontSize).toFixed(2))
+  const html = parseFloat(document.getElementsByTagName('html')[0].style.fontSize)
+  if(clientWidth<=750){
+    return ((res * 100 * html) / 37.5)
   }
-  return res * fontSize
+  return ((res * 100 * html) / 192)
 }
 
 // 最大最小值

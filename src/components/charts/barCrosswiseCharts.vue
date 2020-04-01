@@ -1,5 +1,5 @@
 <template>
-  <ECharts v-if="options" :id="id" ref="echarts" :options="options" />
+  <ECharts v-if="options" :id="id" ref="echarts" :options="options" :reOption="setOptions"/>
 </template>
 
 <script>
@@ -53,9 +53,10 @@ export default {
         },
         grid: {
           top: '15%',
-          bottom: '20%',
-          left: '15%',
-          right: '10%'
+          bottom: '12%',
+          left: '2%',
+          right: '10%',
+          containLabel:true
         },
         legend: {
           show: false,

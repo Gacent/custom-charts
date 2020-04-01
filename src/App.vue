@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="test">
-      <lineBarCharts id="line1" />
+      <lineCharts id="line1" :datas="cityDatas"/>
     </div>
     <div class="test">
-      <barCrosswiseCharts id="line" />
+      <pieCharts id="line" :datas="cityDatas"/>
     </div>
     <div class="test">
       <mapFly id="mapfly" :fly-to="{name:'丹巴',lnglat:[101.89077, 30.87868]}" :datas="cityDatas"/>
@@ -25,7 +25,7 @@ export default {
   components: {
   },
   mounted () {
-
+  
   }
 }
 </script>

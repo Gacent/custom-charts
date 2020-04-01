@@ -1,8 +1,9 @@
 <template>
-  <ECharts v-if="options" :id="id" :options="options" />
+  <ECharts v-if="options" :id="id" :options="options" :reOption="setOptions"/>
 </template>
 
 <script>
+import { fontSize } from './utils'
 import echarts from 'echarts'
 // test测试数据，后期对接需要删除
 import sameOptions from './mixins' // 共同的配置项
@@ -21,12 +22,6 @@ export default {
       type: Object,
       default () {
         return { name: '丹巴', lnglat: [101.89077, 30.87868] }
-      }
-    },
-    isCity:{
-      type:Boolean,
-      default(){
-        return false
       }
     }
   },
@@ -122,13 +117,13 @@ export default {
             trailLength: 0, // 特效尾迹长度[0,1]值越大，尾迹越长重
             symbol: planePath,
             // symbol: 'arrow', // 箭头图标
-            symbolSize: 15 // 图标大小
+            symbolSize: fontSize(0.15) // 图标大小
           },
           lineStyle: {
             normal: {
-              width: 1, // 尾迹线条宽度
-              opacity: 1, // 尾迹线条透明度
-              curveness: 0.3 // 尾迹线条曲直度
+              width: fontSize(0.01), // 尾迹线条宽度
+              opacity: fontSize(0.01), // 尾迹线条透明度
+              curveness: fontSize(0.003) // 尾迹线条曲直度
             }
           },
           data: this.convertData(item[1])
@@ -146,11 +141,11 @@ export default {
             normal: {
               show: true,
               position: 'right', // 显示位置
-              offset: [5, 0], // 偏移设置
+              offset: [fontSize(0.05), 0], // 偏移设置
               formatter: function (params) { // 圆环显示文字
                 return params.data.name
               },
-              fontSize: 13
+              fontSize: fontSize(0.13)
             },
             emphasis: {
               show: true
@@ -201,7 +196,8 @@ export default {
               formatter: '{b}',
               textStyle: {
                 color: '#0f0'
-              }
+              },
+              fontSize: fontSize(0.13)
             },
             emphasis: {
               show: true,
@@ -209,7 +205,7 @@ export default {
             }
           },
           symbol: 'pin',
-          symbolSize: 50,
+          symbolSize: fontSize(0.5),
           data: [{
             name: item[0],
             value:this.geoCoordMap[item[0]].concat([0])
@@ -239,9 +235,11 @@ export default {
         },
         visualMap: { // 图例值控制
           min: objmaxmin.min[0].value,
+          itemWidth:fontSize(0.2),
+          itemHeight:fontSize(1.4),
           max: objmaxmin.max[0].value,
           left: '8%',
-          bottom: 5,
+          bottom: fontSize(0.05),
           calculable: true,
           show: true,
           color: ['#f44336', '#fc9700', '#ffde00', '#ffde00', '#00eaff'],
@@ -257,8 +255,7 @@ export default {
               show: false
             }
           },
-          top: 45,
-          // roam: true, // 是否允许缩放
+          roam: true, // 是否允许缩放
           itemStyle: {
             normal: {
               color: 'rgba(0, 0, 82, 1)', // 地图背景色
