@@ -33,10 +33,14 @@ export function fontSize (res) {
   // }
   // return Number((res * fontSize).toFixed(2))
   const html = parseFloat(document.getElementsByTagName('html')[0].style.fontSize)
-  if(clientWidth<=750){
-    return ((res * 100 * html) / 37.5)
+  if(html){
+    if(clientWidth<=750){
+      return ((res * 100 * html) / 37.5)
+    }
+    return ((res * 100 * html) / 192)
+  } else {
+    return res*100
   }
-  return ((res * 100 * html) / 192)
 }
 
 // 最大最小值

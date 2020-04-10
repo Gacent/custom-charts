@@ -90,19 +90,23 @@ export default {
     },
     // 转换所有outOptions内所有fontSize字符串
     translateFontSize(options){
-      Object.keys(options).forEach((key)=>{
-        if(typeof options[key]==='object') return this.translateFontSize(options[key]);
-        let str=String(options[key])
-        if(str.indexOf('fontSize')!=-1){
-          options[key]=fontSize(/(\d+\.\d+)/.exec(str)[1])
-        }
-      })
-      return options
+      if(options){
+        Object.keys(options).forEach((key)=>{
+          if(typeof options[key]==='object') return this.translateFontSize(options[key]);
+          let str=String(options[key])
+          if(str.indexOf('fontSize')!=-1){
+            options[key]=fontSize(/(\d+\.\d+)/.exec(str)[1])
+          }
+        })
+        return options
+      }
     },
     merge() {
       this.options = {}
       let cloneObj=_cloneDeep(this.outOptions)
-      this.translateFontSize(cloneObj)
+      if(cloneObj){ // 有外部选项才执行
+        this.translateFontSize(cloneObj)
+      }
       // 深度合并
       _merge(this.options, this.defaultOptions, cloneObj)
       cloneObj=null

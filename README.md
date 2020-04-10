@@ -113,3 +113,5 @@ Vue.use(CustomCharts)
 - 解决窗口变化不能自适应字体的问题，假如字号15px，外部传入时候需要改成字符串fontSize(0.15)
 ## 0.3.1
 - 修改：pie的itemGap响应式
+## 0.3.2
+- 修改：当没有使用html的fontSize的时候，就默认返回数字
