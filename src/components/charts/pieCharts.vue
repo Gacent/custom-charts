@@ -60,6 +60,7 @@ export default {
           top: '68%',
           itemWidth: fontSize(0.1),
           itemHeight: fontSize(0.1),
+          itemGap:fontSize(0.1),
           align: 'left',
           textStyle: {
             rich: {
