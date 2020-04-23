@@ -15,9 +15,9 @@
     "lodash": "^4.17.15",
     "vue": "^2.6.10"
   },
-  "main": "./dist/customcharts.common.js",
+  "main": "./dist/customcharts.umd.min.js",
   "files": [
-    "dist/customcharts.umd.min.*",
+    "dist/customcharts.umd.min.js",
     "*.json"
   ],
   "repository": {
