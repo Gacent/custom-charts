@@ -1,4 +1,5 @@
 module.exports = {
+  productionSourceMap: false,
   chainWebpack: config => {
     // GraphQL Loader
     config.module
