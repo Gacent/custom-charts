@@ -38,7 +38,7 @@ export default {
     },
     datas: { // 数据变更更新
       handler() {
-        if (this.datas && this.datas.length > 0 && this.datas[0].length > 0) {
+        if (this.isHasDatas) {
           this.setOptions()
         } else {
           this.notChart()
@@ -55,12 +55,17 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      if (this.datas && this.datas.length > 0 && this.datas[0].length > 0) {
+      if (this.isHasDatas) {
         this.initChart()
       } else {
         this.notChart()
       }
     })
+  },
+  computed:{
+    isHasDatas(){
+      return this.datas && this.datas.length > 0 && this.datas[0].length > 0
+    }
   },
   methods: {
     // 触发大小变化

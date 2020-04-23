@@ -1,6 +1,6 @@
 {
   "name": "custom-charts",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -33,6 +33,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "webpack-bundle-analyzer": "^3.7.0"
   }
 }

@@ -19,7 +19,7 @@ export default {
   data(){
     return {
       chinaDatas:[[{name:'广东',value:12},{name:'四川',value:55}]],
-      cityDatas:[[{name:'广州',value:15},{name:'杭州',value:88}]]
+      cityDatas:[]
     }
   },
   components: {

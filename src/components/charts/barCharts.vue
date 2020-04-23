@@ -28,6 +28,7 @@ export default {
   },
   methods: {
     setOptions(){
+      if(!this.isHasDatas) return;
       let series=[]
       let xName=[]
       this.endDatas.map((items, index)=>{

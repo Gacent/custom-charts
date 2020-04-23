@@ -115,3 +115,5 @@ Vue.use(CustomCharts)
 - 修改：pie的itemGap响应式
 ## 0.3.2
 - 修改：当没有使用html的fontSize的时候，就默认返回数字
+## 0.3.3
+- 修改：禁止测试数据的显示

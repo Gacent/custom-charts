@@ -23,6 +23,7 @@ export default {
   },
   methods: {
     setOptions () {
+      if(!this.isHasDatas) return;
       this.defaultOptions = {
         tooltip: {
           trigger: 'item',
