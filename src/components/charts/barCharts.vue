@@ -1,5 +1,5 @@
 <template>
-  <ECharts v-if="options" :id="id" ref="echarts" :options="options" />
+  <ECharts v-if="options" :id="id" ref="echarts" :options="options" :reOption="setOptions"/>
 </template>
 
 <script>
@@ -18,73 +18,130 @@ export default {
   },
   data () {
     return {
-      options: null,
       color: ['rgba(26, 116, 218, 1)', 'rgba(80, 194, 254, 1)', 'rgba(25, 188, 156, 1)', 'rgba(251, 178, 65, 1)', 'rgba(222, 76, 105, 1)', 'rgba(228, 214, 160, 1)'],
-      defaultOptions: null
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-      this.initChart()
-    })
+  computed:{
+    endDatas(){
+      return this.datas||jsonData.chartData1
+    }
   },
   methods: {
-    initChart () {
+    setOptions(){
+      if(!this.isHasDatas) return;
+      let series=[]
+      let xName=[]
+      this.endDatas.map((items, index)=>{
+        items.map((nameItem) => {
+          if(xName.indexOf(nameItem.name) <= -1) {
+            xName.push(nameItem.name)
+          }
+        })
+        series.push({
+          name: this.legendDatas ? this.legendDatas[index] : '',
+          type: 'bar',
+          barWidth: fontSize(0.12),
+          data: items
+        })
+        
+      })
       this.defaultOptions = {
+        color: 'rgba(54, 223, 203, 1)',
+        title:{
+          left: 'center',
+          top: fontSize(0.2),
+          textStyle: {
+            color: '#fff',
+            fontSize:fontSize(0.18),
+            fontWeight: 500
+          }
+        },
         tooltip: {
           trigger: 'axis',
           axisPointer: { // 坐标轴指示器，坐标轴触发有效
             type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           }
         },
-        grid: {
-          top: '15%',
-          bottom: '15%',
-          left: '15%',
-          right: '10%'
-        },
-        // eslint-disable-next-line
-        xAxis: {
-          type: 'category',
-          axisLabel: {
-            color: 'rgba(93, 98, 120, 1)',
+        dataZoom: [{
+          type: 'inside',
+          endValue:5,
+          minValueSpan:3,
+        }],
+        legend: {
+          show: false,
+          top: '0',
+          right: fontSize(0.5),
+          itemWidth: fontSize(0.12),
+          itemHeight: fontSize(0.12),
+          itemGap: fontSize(0.20),
+          textStyle: {
+            color: '#FFF',
             fontSize: fontSize(0.12)
           },
+          data: this.legendDatas
+        },
+        grid: {
+          top: '15%',
+          bottom: '12%',
+          left: '2%',
+          right: '10%',
+          containLabel:true
+        },
+        xAxis: {
+          type: 'category',
           nameTextStyle: {
             color: 'rgba(93, 98, 120, 1)',
             fontSize: fontSize(0.12)
           },
-          data: jsonData.chartData1.map((item) => {
-            return item.name
-          })
+          nameGap:fontSize(0.25),
+          nameLocation:'center',
+          splitLine: {
+            normal: {
+              show: false
+            }
+          },
+          axisLabel: {
+            interval: 0,
+            color: '#5D6278',
+            fontSize: fontSize(0.12)
+          },
+          axisLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          },
+          data: xName
         },
-        // eslint-disable-next-line
         yAxis: {
           type: 'value',
           name: '数量（次）',
-          axisLabel: {
-            color: 'rgba(93, 98, 120, 1)',
-            fontSize: fontSize(0.12)
-          },
+          nameLocation: 'end',
           nameTextStyle: {
-            color: 'rgba(93, 98, 120, 1)',
-            fontSize: fontSize(0.12)
+            color: '#5D6278',
+            fontSize: fontSize(0.12),
+            align: 'center'
           },
           splitLine: {
             lineStyle: {
-              color: 'rgba(255, 255, 255, .1)'
+              color: 'rgba(255,255,255,0.1)'
             }
+          },
+          axisLabel: {
+            color: '#5D6278',
+            fontSize: fontSize(0.12),
+          },
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: 'rgba(255,255,255,0.1)'
+            }
+          },
+          axisTick: {
+            show: false
           }
         },
-        series: [{
-          type: 'bar',
-          data: jsonData.chartData1,
-          itemStyle: {
-            color: this.isDiffColor ? (params) => {
-              return this.color[params.dataIndex % 6]
-            } : 'rgba(80, 254, 202, 1)'
-          }
-        }]
+        series: series
       }
       this.merge()
     }
