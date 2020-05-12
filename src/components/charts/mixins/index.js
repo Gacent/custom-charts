@@ -65,6 +65,9 @@ export default {
   computed:{
     isHasDatas(){
       return this.datas && this.datas.length > 0 && this.datas[0].length > 0
+    },
+    endOptions(){
+      return this.isHasDatas?this.setOptions:this.notChart
     }
   },
   methods: {

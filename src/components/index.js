@@ -5,6 +5,7 @@ import lineBarCharts from './charts/lineBarCharts'
 import pieCharts from './charts/pieCharts'
 import mapFly from './charts/mapFly'
 import meterCharts from './charts/meterCharts'
+import wordCloudChart from './charts/wordCloudChart'
 
 import {chartType} from './charts/json/chartType'
 
@@ -18,6 +19,7 @@ const Components = {
   pieCharts,
   mapFly,
   meterCharts,
+  wordCloudChart,
 
   ECharts
 }
