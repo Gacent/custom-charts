@@ -1,5 +1,5 @@
 <template>
-  <ECharts v-if="options" :id="id" ref="echarts" :options="options" :reOption="endOptions"/>
+  <ECharts v-if="options" :id="id" ref="echarts" :options="options" :re-option="endOptions" />
 </template>
 
 <script>
@@ -8,26 +8,26 @@ import sameOptions from './mixins' // 共同的配置项
 import jsonData from './json/testData'
 export default {
   mixins: [sameOptions],
-  computed:{
-    endDatas(){
-      let endData=(this.datas&&this.datas.length>0)?this.datas:jsonData.chartData1
+  computed: {
+    endDatas() {
+      const endData = (this.datas && this.datas.length > 0) ? this.datas : jsonData.chartData1
       return endData
     }
   },
   methods: {
-    setOptions () {
-      if(!this.isHasDatas) return;
-      let series=[]
-      let xName=[]
-      this.endDatas.map((items, index)=>{
+    setOptions() {
+      if (!this.isHasDatas) return
+      const series = []
+      const xName = []
+      this.endDatas.map((items, index) => {
         items.map((nameItem) => {
-          if(xName.indexOf(nameItem.name) <= -1) {
+          if (xName.indexOf(nameItem.name) <= -1) {
             xName.push(nameItem.name)
           }
         })
         series.push({
           type: 'bar',
-          name:this.legendDatas ? this.legendDatas[index] : '',
+          name: this.legendDatas ? this.legendDatas[index] : '',
           data: items,
           barWidth: fontSize(0.10),
           itemStyle: {
@@ -37,12 +37,12 @@ export default {
         })
       })
       this.defaultOptions = {
-        title:{
+        title: {
           left: 'center',
           top: fontSize(0.2),
           textStyle: {
             color: '#fff',
-            fontSize:fontSize(0.18),
+            fontSize: fontSize(0.18),
             fontWeight: 500
           }
         },
@@ -57,7 +57,7 @@ export default {
           bottom: '12%',
           left: '2%',
           right: '10%',
-          containLabel:true
+          containLabel: true
         },
         legend: {
           show: false,
@@ -75,7 +75,7 @@ export default {
         // eslint-disable-next-line
         yAxis: {
           type: 'category',
-          nameLocation:'start',
+          nameLocation: 'start',
           inverse: true, // 方向坐标
           nameTextStyle: {
             color: 'rgba(93, 98, 120, 1)',
@@ -89,7 +89,7 @@ export default {
           },
           axisLabel: {
             color: '#5D6278',
-            fontSize: fontSize(0.12),
+            fontSize: fontSize(0.12)
           },
           axisLine: {
             show: true,
@@ -109,8 +109,8 @@ export default {
             color: 'rgba(93, 98, 120, 1)',
             fontSize: fontSize(0.12)
           },
-          nameLocation:'center',
-          nameGap:fontSize(0.25),
+          nameLocation: 'center',
+          nameGap: fontSize(0.25),
           splitLine: {
             show: false,
             lineStyle: {
@@ -129,7 +129,7 @@ export default {
           },
           axisTick: {
             show: false
-          },
+          }
         },
         series: series
       }

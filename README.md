@@ -131,3 +131,6 @@ Vue.use(CustomCharts)
 ## 0.3.5
 - 增加词云组件
 - 修改：无数据时候的BUG修复
+## 0.3.6
+- fix：echarts库升级4.7，修复了地图散点和地图之间错位的问题
+- feat：代码规范化eslint配置

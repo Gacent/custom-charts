@@ -1,5 +1,5 @@
 <template>
-  <div :id="id" :class="className" :style="{height:height,width:width}"/>
+  <div :id="id" :class="className" :style="{height:height,width:width}" />
 </template>
 
 <script>
@@ -28,13 +28,14 @@ export default {
     },
     options: {
       type: Object,
-      default () {
+      default() {
         return {}
       }
     },
-    reOption:Function
+    // eslint-disable-next-line vue/require-default-prop
+    reOption: Function
   },
-  data () {
+  data() {
     return {
       chart: null
     }
@@ -42,18 +43,18 @@ export default {
   // 监听options修改了就实时更新
   watch: {
     options: {
-      handler (options) {
-        this.chart.setOption(options,true)
+      handler(options) {
+        this.chart.setOption(options, true)
       },
       deep: true
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       this.initChart()
     })
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (!this.chart) {
       return
     }
@@ -61,7 +62,7 @@ export default {
     this.chart = null
   },
   methods: {
-    initChart () {
+    initChart() {
       this.chart = echarts.init(document.getElementById(this.id))
       this.chart.setOption(this.options)
     }

@@ -2,7 +2,7 @@
  * 随机产生十六进制的颜色值
  * @returns {string}
  */
-export function randomColor () {
+export function randomColor() {
   let str = '#'
   const colorNum = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
   for (let i = 0; i < 6; i++) {
@@ -13,11 +13,11 @@ export function randomColor () {
 }
 
 // 字体适应
-export function fontSize (res) {
+export function fontSize(res) {
   // const docEl = document.documentElement
   const clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
   if (!clientWidth) return
-  // let fontSize 
+  // let fontSize
   // if(clientWidth<=375){
   //   fontSize = 100 * (clientWidth / 375)
   // } else if(clientWidth<=414){
@@ -33,26 +33,26 @@ export function fontSize (res) {
   // }
   // return Number((res * fontSize).toFixed(2))
   const html = parseFloat(document.getElementsByTagName('html')[0].style.fontSize)
-  if(html){
-    if(clientWidth<=750){
+  if (html) {
+    if (clientWidth <= 750) {
       return ((res * 100 * html) / 37.5)
     }
     return ((res * 100 * html) / 192)
   } else {
-    return res*100
+    return res * 100
   }
 }
 
 // 最大最小值
-export function exeMaxMin (data, sorts) {
+export function exeMaxMin(data, sorts) {
   var min
   var max
   if (sorts) { // 降序
-    data.sort(function (a, b) { return b.value - a.value })
+    data.sort(function(a, b) { return b.value - a.value })
     max = data[0]
     min = data[data.length - 1]
   } else { // 升序
-    data.sort(function (a, b) { return a.value - b.value })
+    data.sort(function(a, b) { return a.value - b.value })
     min = data[0]
     max = data[data.length - 1]
   }
@@ -62,8 +62,8 @@ export function exeMaxMin (data, sorts) {
   }
 }
 
-export function transformNumber (number, decimalDigit) {
-  function addWan (integer, number, mutiple, decimalDigit) {
+export function transformNumber(number, decimalDigit) {
+  function addWan(integer, number, mutiple, decimalDigit) {
     // var me = this
     var digit = getDigit(integer)
     if (digit > 3) {
@@ -76,7 +76,7 @@ export function transformNumber (number, decimalDigit) {
       return Math.round(number / Math.pow(10, mutiple - decimalDigit)) / Math.pow(10, decimalDigit)
     }
   }
-  function getDigit (integer) {
+  function getDigit(integer) {
     var digit = -1
     while (integer >= 1) {
       digit++
@@ -108,7 +108,7 @@ export function transformNumber (number, decimalDigit) {
 }
 
 // 径向渐变
-export function translateColor (color1, color2, isX = 1) {
+export function translateColor(color1, color2, isX = 1) {
   return {
     type: 'linear',
     x: 0,

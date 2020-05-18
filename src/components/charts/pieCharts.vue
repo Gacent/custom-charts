@@ -1,29 +1,28 @@
 <template>
-  <ECharts v-if="options" :id="id" :options="options" :reOption="endOptions"/>
+  <ECharts v-if="options" :id="id" :options="options" :re-option="endOptions" />
 </template>
 
 <script>
 import { transformNumber, fontSize } from './utils'
 import sameOptions from './mixins' // 共同的配置项
 import jsonData from './json/testData'
-import {colorAry} from './utils/translateColors'
+import { colorAry } from './utils/translateColors'
 export default {
   mixins: [sameOptions],
-  data () {
+  data() {
     return {
       options: null,
-      defaultOptions: null,
+      defaultOptions: null
     }
   },
-  computed:{
-    endDatas(){
-      return (this.datas&&this.datas.length>0)?this.datas[0]:jsonData.chartData2[0]
-      
+  computed: {
+    endDatas() {
+      return (this.datas && this.datas.length > 0) ? this.datas[0] : jsonData.chartData2[0]
     }
   },
   methods: {
-    setOptions () {
-      if(!this.isHasDatas) return;
+    setOptions() {
+      if (!this.isHasDatas) return
       this.defaultOptions = {
         tooltip: {
           trigger: 'item',
@@ -61,7 +60,7 @@ export default {
           top: '68%',
           itemWidth: fontSize(0.1),
           itemHeight: fontSize(0.1),
-          itemGap:fontSize(0.1),
+          itemGap: fontSize(0.1),
           align: 'left',
           textStyle: {
             rich: {
@@ -75,11 +74,11 @@ export default {
               }
             }
           },
-          pageTextStyle:{
-            color:'#fff',
-            fontSize:fontSize(0.12),
+          pageTextStyle: {
+            color: '#fff',
+            fontSize: fontSize(0.12)
           },
-          pageIconSize:fontSize(0.10),
+          pageIconSize: fontSize(0.10),
           formatter: (name) => {
             let con = ''
             this.endDatas.map((item) => {
@@ -96,8 +95,8 @@ export default {
           radius: ['40%', '60%'],
           center: ['50%', '35%'],
           roseType: false,
-          color:colorAry,
-          stillShowZeroSum:false,
+          color: colorAry,
+          stillShowZeroSum: false,
           data: this.endDatas,
           labelLine: {
             show: false

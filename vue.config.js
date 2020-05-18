@@ -6,10 +6,10 @@ module.exports = {
       .rule('images')
       .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
       .use('url-loader')
-        .loader('url-loader')
-        .tap(options => {
-          options.limit=102400
-          return options
-        })
+      .loader('url-loader')
+      .tap(options => {
+        options.limit = 102400
+        return options
+      })
   }
 }
