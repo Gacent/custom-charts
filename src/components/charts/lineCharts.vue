@@ -5,22 +5,15 @@
 <script>
 import { fontSize } from './utils'
 import sameOptions from './mixins' // 共同的配置项
-import jsonData from './json/testData'
 export default {
   name: 'LineCharts',
   mixins: [sameOptions],
-  computed: {
-    endDatas() {
-      const endData = (this.datas && this.datas.length > 0) ? this.datas : jsonData.chartData1
-      return endData
-    }
-  },
   methods: {
     setOptions() {
       if (!this.isHasDatas) return
       const series = []
       const xName = []
-      this.endDatas.map((items, index) => {
+      this.datas.map((items, index) => {
         items.map((nameItem) => {
           if (xName.indexOf(nameItem.name) <= -1) {
             xName.push(nameItem.name)
@@ -104,7 +97,7 @@ export default {
           boundaryGap: false
         },
         yAxis: {
-          type: 'value',
+          type: this.intervalBiger(this.endDatas),
           nameLocation: 'end',
           nameTextStyle: {
             color: '#5D6278',

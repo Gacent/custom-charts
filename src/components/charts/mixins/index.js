@@ -53,6 +53,17 @@ export default {
       defaultOptions: null
     }
   },
+  computed: {
+    endDatas() {
+      return this.datas
+    },
+    isHasDatas() {
+      return this.datas && this.datas.length > 0 && this.datas[0].length > 0
+    },
+    endOptions() {
+      return this.isHasDatas ? this.setOptions : this.notChart
+    }
+  },
   mounted() {
     this.$nextTick(() => {
       if (this.isHasDatas) {
@@ -62,15 +73,24 @@ export default {
       }
     })
   },
-  computed: {
-    isHasDatas() {
-      return this.datas && this.datas.length > 0 && this.datas[0].length > 0
-    },
-    endOptions() {
-      return this.isHasDatas ? this.setOptions : this.notChart
-    }
-  },
   methods: {
+    // 数据之间最大最小值之间的差值，如果大于三个量级，则使用log方式
+    intervalBiger(data) {
+      const arr = []
+      if (data.length > 0) {
+        data.map((item) => {
+          item.map((child) => {
+            arr.push(child.value)
+          })
+        })
+      }
+      const max = Math.max(...arr)
+      const min = Math.min(...arr)
+      if (max > min * 500) {
+        return 'log'
+      }
+      return 'value'
+    },
     // 触发大小变化
     outResize() {
       this.$refs.echarts.$_resizeHandler()
@@ -102,7 +122,6 @@ export default {
         Object.keys(options).forEach((key) => {
           if (typeof options[key] === 'object') return this.translateFontSize(options[key])
           const str = String(options[key])
-          // eslint-disable-next-line
           if (str.indexOf('fontSize') != -1) {
             options[key] = fontSize(/(\d+\.\d+)/.exec(str)[1])
           }

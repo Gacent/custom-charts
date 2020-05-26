@@ -2,7 +2,6 @@ import _debounce from 'lodash/debounce'
 export default {
   data() {
     return {
-      $_sidebarElm: null,
       $_resizeHandler: null
     }
   },

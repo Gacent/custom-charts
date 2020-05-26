@@ -5,28 +5,12 @@
 <script>
 import { fontSize, translateColor } from './utils'
 import sameOptions from './mixins' // 共同的配置项
-import jsonData from './json/testData'
 
 export default {
   mixins: [sameOptions],
-  props: {
-    isDiffColor: {
-      type: Boolean,
-      default() {
-        return false
-      }
-    }
-  },
-  data() {
-    return {
-      options: null,
-      color: ['rgba(26, 116, 218, 1)', 'rgba(80, 194, 254, 1)', 'rgba(25, 188, 156, 1)', 'rgba(251, 178, 65, 1)', 'rgba(222, 76, 105, 1)', 'rgba(228, 214, 160, 1)'],
-      defaultOptions: null
-    }
-  },
   computed: {
     endDatas() {
-      return (this.datas && this.datas.length > 0) ? this.datas[0] : jsonData.gaugeData
+      return this.datas[0]
     }
   },
   methods: {

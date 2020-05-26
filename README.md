@@ -11,6 +11,7 @@
 4. 无数据时候会显示暂无数据
 5. 因为echarts不能随屏幕变化而自适应字体，如果想自适应字体，自己需要先搭建好amfe-flexible，会自动读取html的font-size值，使用时候可以在需要字体自适应的地方传入字符串形式的'fontSize(xx)'，例如fontSize(0.12)表示12px；默认相对于1920分辨率
 6. 也支持手机端的使用，也是需要先配好amfe-flexible，使用方式和pc一样；默认相对375设备独立像素
+7. y轴数据：大差距数据使用log类型
 
 ## chart
 ### 公共props参数
@@ -134,3 +135,6 @@ Vue.use(CustomCharts)
 ## 0.3.6
 - fix：echarts库升级4.7，修复了地图散点和地图之间错位的问题
 - feat：代码规范化eslint配置
+## 0.3.7
+- fix：修复折线图、柱状图等的value差距过大导致绘制出来的图形没有落差，大差距数据使用log
+- fix：删除测试数据jsonData，并将enDatas抽离公共mixin

@@ -5,7 +5,6 @@
 <script>
 import { fontSize } from './utils'
 import sameOptions from './mixins' // 共同的配置项
-import jsonData from './json/testData'
 export default {
   mixins: [sameOptions],
   props: {
@@ -26,11 +25,6 @@ export default {
       ]
     }
   },
-  computed: {
-    endDatas() {
-      return this.datas || jsonData.chartData3
-    }
-  },
   methods: {
     setOptions() {
       if (!this.isHasDatas) return
@@ -45,7 +39,7 @@ export default {
         })
         if (index === 0) {
           yAxis.push({
-            type: 'value',
+            type: this.intervalBiger(this.endDatas),
             name: this.legendDatas ? this.legendDatas[0] : '',
             nameTextStyle: {
               color: 'rgba(93, 98, 120, 1)',
@@ -98,7 +92,7 @@ export default {
             }
           })
           yAxis.push({
-            type: 'value',
+            type: this.intervalBiger(this.endDatas),
             name: this.legendDatas ? this.legendDatas[index] : '',
             nameTextStyle: {
               color: 'rgba(93, 98, 120, 1)',

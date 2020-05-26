@@ -1,6 +1,6 @@
 {
   "name": "custom-charts",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,6 +9,7 @@
     "inspect": "vue-cli-service inspect",
     "build:component": "vue-cli-service build --target lib --name customcharts ./src/components/index.js"
   },
+  "license": "MIT",
   "dependencies": {
     "core-js": "^3.4.4",
     "echarts": "^4.7.0",

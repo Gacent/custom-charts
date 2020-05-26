@@ -3,17 +3,10 @@
 </template>
 
 <script>
-import { fontSize, translateColor } from './utils'
+import { fontSize, translateColor, transformNumber } from './utils'
 import sameOptions from './mixins' // 共同的配置项
-import jsonData from './json/testData'
 export default {
   mixins: [sameOptions],
-  computed: {
-    endDatas() {
-      const endData = (this.datas && this.datas.length > 0) ? this.datas : jsonData.chartData1
-      return endData
-    }
-  },
   methods: {
     setOptions() {
       if (!this.isHasDatas) return
@@ -104,7 +97,7 @@ export default {
         },
         // eslint-disable-next-line
         xAxis: {
-          type: 'value',
+          type: this.intervalBiger(this.endDatas),
           nameTextStyle: {
             color: 'rgba(93, 98, 120, 1)',
             fontSize: fontSize(0.12)
@@ -119,6 +112,9 @@ export default {
           },
           axisLabel: {
             color: '#5D6278',
+            formatter(value) {
+              return transformNumber(value)
+            },
             fontSize: fontSize(0.12)
           },
           axisLine: {

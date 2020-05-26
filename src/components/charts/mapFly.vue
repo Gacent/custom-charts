@@ -7,7 +7,6 @@ import { fontSize } from './utils'
 import echarts from 'echarts'
 // test测试数据，后期对接需要删除
 import sameOptions from './mixins' // 共同的配置项
-import json from './json/testData'
 import cityJson from './json/city'
 
 // 引入中国地图
@@ -28,20 +27,16 @@ export default {
   data() {
     return {
       geoCoordMap: {},
-      chinaDatas: json.chinaDatas
+      planePath: 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z'
     }
   },
   computed: {
     endDatas() {
       const endAry = []
-      if (this.datas && this.datas.length > 0 && this.datas[0].length > 0) {
-        this.datas[0].map((item) => {
-          endAry.push([item])
-        })
-        return endAry
-      } else {
-        return this.chinaDatas
-      }
+      this.datas[0].map((item) => {
+        endAry.push([item])
+      })
+      return endAry
     }
   },
   watch: {
@@ -101,7 +96,6 @@ export default {
     setOptions() {
       if (!this.isHasDatas) return
       var series = []
-      var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z'
       const objmaxmin = this.findMaxMin(this.endDatas);
       [
         [this.flyTo.name, this.endDatas]
@@ -116,7 +110,7 @@ export default {
             show: true,
             period: 4, // 箭头指向速度，值越小速度越快
             trailLength: 0, // 特效尾迹长度[0,1]值越大，尾迹越长重
-            symbol: planePath,
+            symbol: this.planePath,
             // symbol: 'arrow', // 箭头图标
             symbolSize: fontSize(0.15) // 图标大小
           },

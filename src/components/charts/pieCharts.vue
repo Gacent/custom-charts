@@ -5,19 +5,12 @@
 <script>
 import { transformNumber, fontSize } from './utils'
 import sameOptions from './mixins' // 共同的配置项
-import jsonData from './json/testData'
 import { colorAry } from './utils/translateColors'
 export default {
   mixins: [sameOptions],
-  data() {
-    return {
-      options: null,
-      defaultOptions: null
-    }
-  },
   computed: {
     endDatas() {
-      return (this.datas && this.datas.length > 0) ? this.datas[0] : jsonData.chartData2[0]
+      return this.datas[0]
     }
   },
   methods: {
