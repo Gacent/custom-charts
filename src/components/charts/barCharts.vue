@@ -42,11 +42,11 @@ export default {
             type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           }
         },
-        dataZoom: [{
-          type: 'inside',
-          endValue: 5,
-          minValueSpan: 3
-        }],
+        // dataZoom: [{
+        //   type: 'inside',
+        //   endValue: 5,
+        //   minValueSpan: 3
+        // }],
         legend: {
           show: false,
           top: '0',
@@ -81,7 +81,7 @@ export default {
             }
           },
           axisLabel: {
-            interval: 0,
+            interval: 'auto',
             color: '#5D6278',
             fontSize: fontSize(0.12)
           },

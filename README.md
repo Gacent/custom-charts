@@ -138,3 +138,6 @@ Vue.use(CustomCharts)
 ## 0.3.7
 - fix：修复折线图、柱状图等的value差距过大导致绘制出来的图形没有落差，大差距数据使用log
 - fix：删除测试数据jsonData，并将enDatas抽离公共mixin
+## 0.3.8
+- fix：x轴name过长导致重叠处理，使用axisLabel的interval设为auto，让其间隔合理显示
+- fix：关闭dataZoom设置，开发者可以自行传入outOptions改变

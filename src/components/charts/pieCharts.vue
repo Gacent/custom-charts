@@ -67,6 +67,8 @@ export default {
               }
             }
           },
+          pageIconInactiveColor: '#666',
+          pageIconColor: '#fff',
           pageTextStyle: {
             color: '#fff',
             fontSize: fontSize(0.12)
