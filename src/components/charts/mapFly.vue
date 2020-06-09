@@ -1,5 +1,5 @@
 <template>
-  <ECharts v-if="options" :id="id" :options="options" :reOption="setOptions"/>
+  <ECharts v-if="options" :id="id" :options="options" :re-option="endOptions" />
 </template>
 
 <script>
@@ -7,7 +7,6 @@ import { fontSize } from './utils'
 import echarts from 'echarts'
 // test测试数据，后期对接需要删除
 import sameOptions from './mixins' // 共同的配置项
-import json from './json/testData'
 import cityJson from './json/city'
 
 // 引入中国地图
@@ -20,39 +19,35 @@ export default {
     // 包括name,和经纬度数组longitude，latitude
     flyTo: {
       type: Object,
-      default () {
+      default() {
         return { name: '丹巴', lnglat: [101.89077, 30.87868] }
       }
     }
   },
-  data () {
+  data() {
     return {
       geoCoordMap: {},
-      chinaDatas: json.chinaDatas
+      planePath: 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z'
     }
   },
-  computed:{
-    endDatas(){
-      let endAry=[]
-      if(this.datas&&this.datas.length>0&&this.datas[0].length>0){
-        this.datas[0].map((item)=>{
-          endAry.push([item])
-        })
-        return endAry
-      } else {
-        return this.chinaDatas
-      }
+  computed: {
+    endDatas() {
+      const endAry = []
+      this.datas[0].map((item) => {
+        endAry.push([item])
+      })
+      return endAry
     }
   },
-  watch:{
-    flyTo(value,oldValue){
+  watch: {
+    flyTo(value, oldValue) {
       delete this.geoCoordMap[oldValue.name]
       this.geoCoordMap[value.name] = [...value.lnglat]
     }
   },
-  mounted () {
+  mounted() {
     var mapFeatures = echarts.getMap('china').geoJson.features
-    this.geoCoordMap=cityJson.geoCoordMap
+    this.geoCoordMap = cityJson.geoCoordMap
     mapFeatures.forEach((v) => {
       // 地区名称
       var name = v.properties.name
@@ -64,10 +59,10 @@ export default {
   },
   methods: {
     // 最大最小值
-    findMaxMin (data) {
+    findMaxMin(data) {
       var min
       var max
-      data.sort(function (a, b) { return a[0].value - b[0].value })
+      data.sort(function(a, b) { return a[0].value - b[0].value })
       min = data.length === 1 ? Object.assign([], [{ value: 0 }]) : data[0]
       max = data[data.length - 1]
       return {
@@ -75,7 +70,7 @@ export default {
         min
       }
     },
-    convertData (data) {  // 控制线得去向
+    convertData(data) { // 控制线得去向
       var res = []
       var toCoord = [...this.flyTo.lnglat]
       for (var i = 0; i < data.length; i++) {
@@ -98,13 +93,12 @@ export default {
 
       return res
     },
-    setOptions(){
-      if(!this.isHasDatas) return;
+    setOptions() {
+      if (!this.isHasDatas) return
       var series = []
-      var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';
       const objmaxmin = this.findMaxMin(this.endDatas);
       [
-        [this.flyTo.name, this.endDatas],
+        [this.flyTo.name, this.endDatas]
       ].forEach((item) => {
         series.push({
           type: 'lines',
@@ -116,7 +110,7 @@ export default {
             show: true,
             period: 4, // 箭头指向速度，值越小速度越快
             trailLength: 0, // 特效尾迹长度[0,1]值越大，尾迹越长重
-            symbol: planePath,
+            symbol: this.planePath,
             // symbol: 'arrow', // 箭头图标
             symbolSize: fontSize(0.15) // 图标大小
           },
@@ -143,7 +137,7 @@ export default {
               show: true,
               position: 'right', // 显示位置
               offset: [fontSize(0.05), 0], // 偏移设置
-              formatter: function (params) { // 圆环显示文字
+              formatter: function(params) { // 圆环显示文字
                 return params.data.name
               },
               fontSize: fontSize(0.13)
@@ -153,7 +147,7 @@ export default {
             }
           },
           symbol: 'circle',
-          symbolSize: function (val) {
+          symbolSize: function(val) {
             return val[2] / objmaxmin.max[0].value + 4// 圆环大小
           },
           itemStyle: {
@@ -179,8 +173,8 @@ export default {
             brushType: 'stroke',
             scale: 4
           },
-          tooltip:{
-            formatter: function (params) {
+          tooltip: {
+            formatter: function(params) {
               // 根据业务自己拓展要显示的内容
               var res = ''
               var name = params.name
@@ -209,7 +203,7 @@ export default {
           symbolSize: fontSize(0.5),
           data: [{
             name: item[0],
-            value:this.geoCoordMap[item[0]].concat([0])
+            value: this.geoCoordMap[item[0]].concat([0])
           }]
         }
         )
@@ -225,7 +219,7 @@ export default {
           enterable: true,
           transitionDuration: 0,
           extraCssText: 'z-index:100',
-          formatter: function (params) {
+          formatter: function(params) {
             // 根据业务自己拓展要显示的内容
             var res = ''
             var name = params.name
@@ -236,8 +230,8 @@ export default {
         },
         visualMap: { // 图例值控制
           min: objmaxmin.min[0].value,
-          itemWidth:fontSize(0.2),
-          itemHeight:fontSize(1.4),
+          itemWidth: fontSize(0.2),
+          itemHeight: fontSize(1.4),
           max: objmaxmin.max[0].value,
           left: '8%',
           bottom: fontSize(0.05),

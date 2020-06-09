@@ -1,39 +1,20 @@
 <template>
-  <ECharts v-if="options" :id="id" ref="echarts" :options="options" :reOption="setOptions"/>
+  <ECharts v-if="options" :id="id" ref="echarts" :options="options" :re-option="endOptions" />
 </template>
 
 <script>
 import { fontSize } from './utils'
 import sameOptions from './mixins' // 共同的配置项
-import jsonData from './json/testData'
 export default {
   mixins: [sameOptions],
-  props: {
-    isDiffColor: {
-      type: Boolean,
-      default () {
-        return false
-      }
-    }
-  },
-  data () {
-    return {
-      color: ['rgba(26, 116, 218, 1)', 'rgba(80, 194, 254, 1)', 'rgba(25, 188, 156, 1)', 'rgba(251, 178, 65, 1)', 'rgba(222, 76, 105, 1)', 'rgba(228, 214, 160, 1)'],
-    }
-  },
-  computed:{
-    endDatas(){
-      return this.datas||jsonData.chartData1
-    }
-  },
   methods: {
-    setOptions(){
-      if(!this.isHasDatas) return;
-      let series=[]
-      let xName=[]
-      this.endDatas.map((items, index)=>{
+    setOptions() {
+      if (!this.isHasDatas) return
+      const series = []
+      const xName = []
+      this.endDatas.map((items, index) => {
         items.map((nameItem) => {
-          if(xName.indexOf(nameItem.name) <= -1) {
+          if (xName.indexOf(nameItem.name) <= -1) {
             xName.push(nameItem.name)
           }
         })
@@ -43,16 +24,15 @@ export default {
           barWidth: fontSize(0.12),
           data: items
         })
-        
       })
       this.defaultOptions = {
         color: 'rgba(54, 223, 203, 1)',
-        title:{
+        title: {
           left: 'center',
           top: fontSize(0.2),
           textStyle: {
             color: '#fff',
-            fontSize:fontSize(0.18),
+            fontSize: fontSize(0.18),
             fontWeight: 500
           }
         },
@@ -62,11 +42,11 @@ export default {
             type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           }
         },
-        dataZoom: [{
-          type: 'inside',
-          endValue:5,
-          minValueSpan:3,
-        }],
+        // dataZoom: [{
+        //   type: 'inside',
+        //   endValue: 5,
+        //   minValueSpan: 3
+        // }],
         legend: {
           show: false,
           top: '0',
@@ -85,7 +65,7 @@ export default {
           bottom: '12%',
           left: '2%',
           right: '10%',
-          containLabel:true
+          containLabel: true
         },
         xAxis: {
           type: 'category',
@@ -93,15 +73,15 @@ export default {
             color: 'rgba(93, 98, 120, 1)',
             fontSize: fontSize(0.12)
           },
-          nameGap:fontSize(0.25),
-          nameLocation:'center',
+          nameGap: fontSize(0.25),
+          nameLocation: 'center',
           splitLine: {
             normal: {
               show: false
             }
           },
           axisLabel: {
-            interval: 0,
+            interval: 'auto',
             color: '#5D6278',
             fontSize: fontSize(0.12)
           },
@@ -114,7 +94,7 @@ export default {
           data: xName
         },
         yAxis: {
-          type: 'value',
+          type: this.intervalBiger(this.endDatas),
           name: '数量（次）',
           nameLocation: 'end',
           nameTextStyle: {
@@ -129,7 +109,7 @@ export default {
           },
           axisLabel: {
             color: '#5D6278',
-            fontSize: fontSize(0.12),
+            fontSize: fontSize(0.12)
           },
           axisLine: {
             show: true,

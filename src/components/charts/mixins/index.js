@@ -10,7 +10,7 @@ export default {
       }
     },
     outOptions: {
-      type: Object,  // 有些要根据resize重新计算的选项要利用Function
+      type: Object, // 有些要根据resize重新计算的选项要利用Function
       default() {
         return null
       }
@@ -30,7 +30,7 @@ export default {
     }
   },
   watch: {
-    outOptions: {  // 选项变更更新
+    outOptions: { // 选项变更更新
       handler() {
         this.setOptions()
       },
@@ -53,6 +53,17 @@ export default {
       defaultOptions: null
     }
   },
+  computed: {
+    endDatas() {
+      return this.datas
+    },
+    isHasDatas() {
+      return this.datas && this.datas.length > 0 && this.datas[0].length > 0
+    },
+    endOptions() {
+      return this.isHasDatas ? this.setOptions : this.notChart
+    }
+  },
   mounted() {
     this.$nextTick(() => {
       if (this.isHasDatas) {
@@ -62,12 +73,24 @@ export default {
       }
     })
   },
-  computed:{
-    isHasDatas(){
-      return this.datas && this.datas.length > 0 && this.datas[0].length > 0
-    }
-  },
   methods: {
+    // 数据之间最大最小值之间的差值，如果大于三个量级，则使用log方式
+    intervalBiger(data) {
+      const arr = []
+      if (data.length > 0) {
+        data.map((item) => {
+          item.map((child) => {
+            arr.push(child.value)
+          })
+        })
+      }
+      const max = Math.max(...arr)
+      const min = Math.min(...arr)
+      if (max > min * 500) {
+        return 'log'
+      }
+      return 'value'
+    },
     // 触发大小变化
     outResize() {
       this.$refs.echarts.$_resizeHandler()
@@ -94,13 +117,13 @@ export default {
       _merge(this.options, this.defaultOptions)
     },
     // 转换所有outOptions内所有fontSize字符串
-    translateFontSize(options){
-      if(options){
-        Object.keys(options).forEach((key)=>{
-          if(typeof options[key]==='object') return this.translateFontSize(options[key]);
-          let str=String(options[key])
-          if(str.indexOf('fontSize')!=-1){
-            options[key]=fontSize(/(\d+\.\d+)/.exec(str)[1])
+    translateFontSize(options) {
+      if (options) {
+        Object.keys(options).forEach((key) => {
+          if (typeof options[key] === 'object') return this.translateFontSize(options[key])
+          const str = String(options[key])
+          if (str.indexOf('fontSize') != -1) {
+            options[key] = fontSize(/(\d+\.\d+)/.exec(str)[1])
           }
         })
         return options
@@ -108,13 +131,13 @@ export default {
     },
     merge() {
       this.options = {}
-      let cloneObj=_cloneDeep(this.outOptions)
-      if(cloneObj){ // 有外部选项才执行
+      let cloneObj = _cloneDeep(this.outOptions)
+      if (cloneObj) { // 有外部选项才执行
         this.translateFontSize(cloneObj)
       }
       // 深度合并
       _merge(this.options, this.defaultOptions, cloneObj)
-      cloneObj=null
+      cloneObj = null
     }
   }
 }

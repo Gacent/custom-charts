@@ -5,8 +5,9 @@ import lineBarCharts from './charts/lineBarCharts'
 import pieCharts from './charts/pieCharts'
 import mapFly from './charts/mapFly'
 import meterCharts from './charts/meterCharts'
+import wordCloudChart from './charts/wordCloudChart'
 
-import {chartType} from './charts/json/chartType'
+import { chartType } from './charts/json/chartType'
 
 import ECharts from './ECharts'
 
@@ -18,6 +19,7 @@ const Components = {
   pieCharts,
   mapFly,
   meterCharts,
+  wordCloudChart,
 
   ECharts
 }
@@ -29,7 +31,7 @@ const install=function (Vue,opt){
   // lodash注册
   // Vue.prototype._ = _
   // 图表数据json表对照
-  Vue.prototype.$chartType=chartType
+  Vue.prototype.$chartType = chartType
 }
 
 export default {

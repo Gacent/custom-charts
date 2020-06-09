@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div class="test">
-      <lineCharts id="line1" :datas="cityDatas"/>
+      <lineCharts id="line1" :datas="cityDatas" />
     </div>
     <div class="test">
-      <pieCharts id="line" :datas="cityDatas"/>
+      <pieCharts id="line" :datas="cityDatas" />
     </div>
     <div class="test">
-      <mapFly id="mapfly" :fly-to="{name:'丹巴',lnglat:[101.89077, 30.87868]}" :datas="cityDatas"/>
+      <mapFly id="mapfly" :fly-to="{name:'丹巴',lnglat:[101.89077, 30.87868]}" :datas="chinaDatas" />
     </div>
   </div>
 </template>
@@ -15,17 +15,17 @@
 <script>
 
 export default {
-  name: 'app',
-  data(){
-    return {
-      chinaDatas:[[{name:'广东',value:12},{name:'四川',value:55}]],
-      cityDatas:[]
-    }
-  },
+  name: 'App',
   components: {
   },
-  mounted () {
-  
+  data() {
+    return {
+      chinaDatas: [[{ name: '广东', value: 12 }, { name: '四川', value: 55 }]],
+      cityDatas: []
+    }
+  },
+  mounted() {
+
   }
 }
 </script>

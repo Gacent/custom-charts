@@ -1,61 +1,54 @@
 <template>
-  <ECharts v-if="options" :id="id" ref="echarts" :options="options" :reOption="setOptions"/>
+  <ECharts v-if="options" :id="id" ref="echarts" :options="options" :re-option="endOptions" />
 </template>
 
 <script>
 import { fontSize } from './utils'
 import sameOptions from './mixins' // 共同的配置项
-import jsonData from './json/testData'
 export default {
-  name: 'lineCharts',
+  name: 'LineCharts',
   mixins: [sameOptions],
-  computed:{
-    endDatas(){
-      let endData=(this.datas&&this.datas.length>0)?this.datas:jsonData.chartData1
-      return endData
-    }
-  },
   methods: {
-    setOptions () {
-      if(!this.isHasDatas) return;
-      let series=[]
-      let xName=[]
-      this.endDatas.map((items, index)=>{
+    setOptions() {
+      if (!this.isHasDatas) return
+      const series = []
+      const xName = []
+      this.datas.map((items, index) => {
         items.map((nameItem) => {
-          if(xName.indexOf(nameItem.name) <= -1) {
+          if (xName.indexOf(nameItem.name) <= -1) {
             xName.push(nameItem.name)
           }
         })
         series.push({
           name: this.legendDatas ? this.legendDatas[index] : '',
           type: 'line',
-          connectNulls:true,
+          connectNulls: true,
           data: items,
           smooth: true
         })
       })
       this.defaultOptions = {
-        title:{
+        title: {
           left: 'center',
           top: fontSize(0.2),
           textStyle: {
             color: '#fff',
-            fontSize:fontSize(0.18),
+            fontSize: fontSize(0.18),
             fontWeight: 500
           }
         },
         tooltip: {
           trigger: 'axis',
-          confine:true,
+          confine: true,
           axisPointer: { // 坐标轴指示器，坐标轴触发有效
             type: 'line' // 默认为直线，可选为：'line' | 'shadow'
           }
         },
-        dataZoom: [{
-          type: 'inside',
-          endValue:5,
-          minValueSpan:3,
-        }],
+        // dataZoom: [{
+        //   type: 'inside',
+        //   endValue: 5,
+        //   minValueSpan: 3
+        // }],
         legend: {
           show: false,
           top: '0',
@@ -74,7 +67,7 @@ export default {
           bottom: '12%',
           left: '2%',
           right: '10%',
-          containLabel:true
+          containLabel: true
         },
         xAxis: {
           type: 'category',
@@ -82,15 +75,15 @@ export default {
             color: 'rgba(93, 98, 120, 1)',
             fontSize: fontSize(0.12)
           },
-          nameLocation:'center',
-          nameGap:fontSize(0.25),
+          nameLocation: 'center',
+          nameGap: fontSize(0.25),
           splitLine: {
             normal: {
               show: false
             }
           },
           axisLabel: {
-            interval: 0,
+            interval: 'auto',
             color: '#5D6278',
             fontSize: fontSize(0.12)
           },
@@ -104,7 +97,7 @@ export default {
           boundaryGap: false
         },
         yAxis: {
-          type: 'value',
+          type: this.intervalBiger(this.endDatas),
           nameLocation: 'end',
           nameTextStyle: {
             color: '#5D6278',
@@ -120,7 +113,7 @@ export default {
           axisLabel: {
             show: true,
             color: '#5D6278',
-            fontSize: fontSize(0.12),
+            fontSize: fontSize(0.12)
           },
           axisLine: {
             show: true,
