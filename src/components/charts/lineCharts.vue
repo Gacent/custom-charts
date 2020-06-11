@@ -76,7 +76,7 @@ export default {
             fontSize: fontSize(0.12)
           },
           nameLocation: 'center',
-          nameGap: fontSize(0.25),
+          nameGap: fontSize(0.3),
           splitLine: {
             normal: {
               show: false

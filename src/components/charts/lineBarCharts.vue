@@ -131,6 +131,7 @@ export default {
         },
         tooltip: {
           trigger: 'axis',
+          confine: true,
           axisPointer: {
             type: 'cross',
             crossStyle: {

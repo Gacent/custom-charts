@@ -74,6 +74,19 @@ flyTo: {
   }
 }
 ```
+##### cityMap（地图图）
+```javascript
+<cityMap id="cityMap" :datas="cityDatas" :city-json="cityJson"  />
+```
+
+```javascript
+// 城市json,和neiCity设置二选一,形式需要cityJson:{name:'广东',geojson:你的json文件}
+cityJson: {
+  type: Object,
+  default: null
+}
+```
+
 #### 词云
 ##### wordCloudChart
 ```javascript
@@ -141,3 +154,7 @@ Vue.use(CustomCharts)
 ## 0.3.8
 - fix：x轴name过长导致重叠处理，使用axisLabel的interval设为auto，让其间隔合理显示
 - fix：关闭dataZoom设置，开发者可以自行传入outOptions改变
+## 0.3.9
+- fix：数据出现0，y轴都使用value类型，对数log类型下会出问题
+- fix：修复barcharts等bar图的tooltip的越界问题
+- feat: 增加cityMap新组件

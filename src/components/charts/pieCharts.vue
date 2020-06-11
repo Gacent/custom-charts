@@ -19,7 +19,7 @@ export default {
       this.defaultOptions = {
         tooltip: {
           trigger: 'item',
-          formatter: '{b} : {d}% <br/> {c}',
+          formatter: '{b} : {c}',
           confine: true
         },
         graphic: {
@@ -81,7 +81,7 @@ export default {
                 con = item.value
               }
             })
-            return `{a|${name}} {b|${transformNumber(con)}人}`
+            return `{a|${name}}  {b|${transformNumber(con)}人}`
           },
           data: this.endDatas
         },

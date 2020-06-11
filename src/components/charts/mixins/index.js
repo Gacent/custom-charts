@@ -74,19 +74,19 @@ export default {
     })
   },
   methods: {
-    // 数据之间最大最小值之间的差值，如果大于三个量级，则使用log方式
+    // 数据之间最大最小值之间的差值，如果大于三个量级或者最大值大于10000，则使用log方式，前提是数据中没有0的数据
     intervalBiger(data) {
       const arr = []
       if (data.length > 0) {
         data.map((item) => {
           item.map((child) => {
-            arr.push(child.value)
+            arr.push(Number(child.value))
           })
         })
       }
       const max = Math.max(...arr)
       const min = Math.min(...arr)
-      if (max > min * 500) {
+      if ((max > min * 500 || max > 10000) && min !== 0 && max !== 0) {
         return 'log'
       }
       return 'value'
@@ -122,6 +122,7 @@ export default {
         Object.keys(options).forEach((key) => {
           if (typeof options[key] === 'object') return this.translateFontSize(options[key])
           const str = String(options[key])
+          // eslint-disable-next-line
           if (str.indexOf('fontSize') != -1) {
             options[key] = fontSize(/(\d+\.\d+)/.exec(str)[1])
           }
