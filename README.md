@@ -158,3 +158,5 @@ Vue.use(CustomCharts)
 - fix：数据出现0，y轴都使用value类型，对数log类型下会出问题
 - fix：修复barcharts等bar图的tooltip的越界问题
 - feat: 增加cityMap新组件
+## 0.4.0
+- fix：修复cityMap数据传入和展示的问题

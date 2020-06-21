@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       chinaDatas: [[{ name: '广东', value: 12 }, { name: '四川', value: 55 }]],
-      cityDatas: [[{ name: '广州市', value: 500 }]],
+      cityDatas: [[{ name: '广州市', value: 500 }, { name: '深圳市', value: 500 }]],
       cityJson: null
     }
   },

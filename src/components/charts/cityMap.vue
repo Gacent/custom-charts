@@ -5,7 +5,6 @@
 <script>
 import { fontSize } from './utils'
 import echarts from 'echarts'
-// test测试数据，后期对接需要删除
 import sameOptions from './mixins' // 共同的配置项
 export default {
   mixins: [sameOptions],
@@ -23,11 +22,7 @@ export default {
   },
   computed: {
     endDatas() {
-      const endAry = []
-      this.datas[0].map((item) => {
-        endAry.push([item])
-      })
-      return endAry
+      return this.datas[0]
     }
   },
   created() {
@@ -76,7 +71,7 @@ export default {
               borderWidth: 0
             }
           },
-          data: this.endDatas[0]
+          data: this.endDatas
         }]
       }
       this.merge()
